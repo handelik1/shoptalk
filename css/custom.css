@@ -1,0 +1,189 @@
+body{
+  overflow-y: scroll;
+}
+
+.font-24{
+	font-size: 24px;
+}
+
+.font-26{
+	font-size: 24px;
+}
+
+.font-28{
+	font-size: 28px;
+}
+
+.font-30{
+	font-size: 30px;
+}
+
+.font-32{
+	font-size: 32px;
+}
+
+.font-34{
+	font-size: 34px;
+}
+
+.font-36{
+	font-size: 36px;
+}
+
+
+.brand{
+	font-weight: bold;
+}
+
+.chat-area{
+  margin-top:1%;
+  height: 90%;
+  max-width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #888888;
+}
+.chat-text{
+  margin-top:1.5%;
+  height: 5%;
+  width: 100%;
+  border: 1px solid black;
+}
+
+
+/* make sidebar nav vertical */ 
+@media only screen and (min-width: 768px) {
+  .navbar{
+    height: 100%;
+    margin-bottom: 0px;
+  }
+
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .sidebar-nav-right .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav-right .navbar ul {
+    float: none;
+  }
+  .sidebar-nav-right .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav-right .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav-right .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .block{
+  display: block;
+  text-align: center;
+}
+
+.brand-color {
+  color: #777;
+}
+.col-sm-2{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.btn{
+  position: relative;
+  width: 100%;
+  top: 11px;
+  right: 10px;
+  padding: 3% 1%;
+}
+}
+
+@media only screen and (max-width: 768px) {
+
+   .sidebar-nav-right{
+   width: 94%;
+	 position: fixed;
+	 bottom: 0px;    
+ }
+
+    .sidebar-nav-right .navbar ul li {
+    display: inline-block;
+}
+    .sidebar-nav-right .navbar ul li a{
+    text-align: center;
+    margin: auto;
+    display: inline-block;
+}
+.center { 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-align: center;
+}
+.block{
+  display: block;
+  text-align: center;
+}
+
+.brand-color {
+  color: #777;
+}
+.navbar{
+  margin-bottom: 0px;
+}
+.chat-area{
+  margin-top:1%;
+  height: 70%;
+  max-width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #888888;
+}
+.chat-text{
+  margin-top:1%;
+  height: 5%;
+  width:81%;
+  border: 1px solid black;
+}
+.col-sm-10{
+  width: 83.33333333%;
+  padding-left: 15px;
+  padding-right: 0px;
+  display: inline;
+}
+.col-sm-2{
+  width: 16.66666667%;
+  padding-left: 0px;
+  padding-right: 0px;
+  display: inline;
+}
+.btn{
+  position: relative;
+  height: 5%;
+  top:0px;
+  line-height: 0px;
+  padding: 10px 1%;
+  margin-left: .5%;
+  width: 11%;
+}
+
+}
