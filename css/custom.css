@@ -30,6 +30,70 @@ body{
 	font-size: 36px;
 }
 
+.inline-block{
+  display: inline-block;
+}
+
+.inline{
+  display: inline;
+}
+
+.block{
+  display: block;
+}
+
+.discussion-header{
+  margin-left: 20%;
+}
+
+.new-discussion-button{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  position: relative;
+  border-radius: 5%;
+  width: 40px;
+  height: 40px;
+}
+
+.disc-panel{
+  z-index: 310;
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 90%;
+  height: 450px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #888888;
+}
+
+.new-disc-header{
+  padding-top: 3%;
+  margin-left: 5%;
+}
+
+.discussion-title{
+  margin-left: 5%;
+}
+
+.disc-title-text{
+  margin-left: 5%;
+  height: 8%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.disc-text{
+  margin-left: 5%;
+  height: 45%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.disc-button{
+  float: right;
+  margin-top: 1%;
+  margin-right: 5%;
+}
 
 .brand{
 	font-weight: bold;
@@ -117,9 +181,12 @@ body{
 }
 
 @media only screen and (max-width: 768px) {
+  body{
+    overflow-y: scroll;
+  }
 
    .sidebar-nav-right{
-   width: 94%;
+   width: 100%;
 	 position: fixed;
 	 bottom: 0px;    
  }
@@ -184,6 +251,62 @@ body{
   padding: 10px 1%;
   margin-left: .5%;
   width: 11%;
+}
+
+.discussion-header{
+  font-size: 22px;
+  margin-left: 0%;
+}
+
+.new-discussion-button{
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -38px;
+  position: relative;
+  border-radius: 5%;
+  width: 30px;
+  height: 30px;
+  float: right;
+}
+
+.smaller-row{
+  height: 15%;
+}
+
+.disc-panel{
+  margin-left: auto;
+  margin-right: auto;
+  width: 98%;
+  height: 330px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #888888;
+
+}
+
+.discussion-title{
+  margin-left: 5%;
+  font-size: 22px;
+}
+
+.disc-title-text{
+  margin-left: 5%;
+  height: 8%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.disc-text{
+  margin-left: 5%;
+  height: 30%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.disc-button{
+  float: right;
+  margin-top: 7%;
+  margin-right: 5%;
 }
 
 }
