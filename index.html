@@ -4,86 +4,213 @@
 	<link rel = "stylesheet" type= "text/css" href = "css/bootstrap-theme.css">
 	<link rel = "stylesheet" type= "text/css" href = "css/custom.css">
   <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </head>
 
+
+<script>
+
+function getDiscussion(){
+  document.getElementById("homepage").style.display = 'none';
+  document.getElementById("discussion-page").style.display = 'block';
+}
+
+function getHome(){
+  document.getElementById("homepage").style.display = 'block';
+  document.getElementById("discussion-page").style.display = 'none';
+}
+
+</script>
+
 <body>
-<div class = "container-fluid">
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="sidebar-nav">
-        <div class="navbar navbar-default" role="navigation">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <span class="visible-xs navbar-brand">Sidebar menu</span>
+
+<!--Home Page Start-->
+<div id = "homepage">
+
+  <div class = "container-fluid">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="sidebar-nav">
+          <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <span class="visible-xs navbar-brand">Sidebar menu</span>
+            </div>
+            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li  onclick = "getHome()"><a id = "home-button" class = "brand font-24">HawkTalk</a></li>
+                <li onclick = "getDiscussion()"><a id = "nav-discussion">Discussion Board</a></li>
+                <li><a href="#">Menu Item 2</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Menu Item 4</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
           </div>
-          <div class="navbar-collapse collapse sidebar-navbar-collapse">
-            <ul class="nav navbar-nav">
-            	<li><a class = "brand font-24" href = "index.html">HawkTalk</a></li>
-              <li><a href="discussion.html">Discussion Board</a></li>
-              <li><a href="#">Menu Item 2</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Menu Item 4</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
         </div>
       </div>
-    </div>
-    <div class="col-sm-8">
+      <div class="col-sm-8">
 
-      <div class = "container-fluid">
+        <div class = "container-fluid">
 
-        <div class = "row">
-          <div class = "col-sm-12">
-            <div class = "chat-area">
-              <p>Text will end up here</p>
+          <div class = "row">
+            <div class = "col-sm-12">
+              <div class = "chat-area">
+                <p>Text will end up here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class = "container-fluid">
+            <div class = "row">
+              <form method = "post" action = "#">
+                <div class = "col-sm-10">
+                  <input class = "chat-text" type = "text" name = "message"/>
+                </div>
+                <div class = "col-sm-2">
+                  <input class = "btn btn-primary" type = "button" name = "submit" value = "Go"/>
+                </div>
+              </form>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-2">
+        <div class="sidebar-nav-right">
+          <div class="navbar navbar-default" role="navigation">
+            <div class="nav">
+              <a class = "brand font-24 block brand-color">Tools</a>
+              <ul class="nav navbar-nav center">
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+                <li><a href="#">Item 4</a></li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<!--HomePage END-->
 
-      <div class = "container-fluid">
-          <div class = "row">
-            <form method = "post" action = "#">
-              <div class = "col-sm-10">
-                <input class = "chat-text" type = "text" name = "message"/>
-              </div>
-              <div class = "col-sm-2">
-                <input class = "btn btn-primary" type = "button" name = "submit" value = "Go"/>
-              </div>
-            </form>
+
+<!--Discussion Start-->
+<div id= "discussion-page">
+  <div class = "container-fluid">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="sidebar-nav">
+          <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <span class="visible-xs navbar-brand">Sidebar menu</span>
+            </div>
+            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li onclick = "getHome()"><a id = "home-button" class = "brand font-24">HawkTalk</a></li>
+                <li onclick = "getDiscussion()"><a id = "nav-discussion">Discussion Board</a></li>
+                <li><a href="#">Menu Item 2</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Menu Item 4</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
           </div>
+        </div>
       </div>
 
-    </div>
+      <div class="col-sm-8">
 
-    <div class="col-sm-2">
-      <div class="sidebar-nav-right">
-        <div class="navbar navbar-default" role="navigation">
-          <div class="nav">
-            <a class = "brand font-24 block brand-color">Tools</a>
-            <ul class="nav navbar-nav center">
-              <li><a href="#">Item 1</a></li>
-              <li><a href="#">Item 2</a></li>
-              <li><a href="#">Item 3</a></li>
-              <li><a href="#">Item 4</a></li>
-            </ul>
+        <div class = "container-fluid">
+          <div class = "row">
+            <div class = "col-sm-12">
+              <div class = "container-fluid">
+                <div class = "row">
+
+                  <div class = "col-sm-10">
+                    <h1 class = "text-center discussion-header">Discussion Board</h1>
+                  </div>
+
+                  <div class = "col-sm-2">
+                    <button type = "button" class = "new-discussion-button font-26" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">+</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class = "row ">
+            <div class = "col-sm-12">
+              <div class = "container-fluid">
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-block">
+                    <div class = "disc-panel">
+                      <form action="#" method="post">
+                        <h2 class = "new-disc-header font-24">New Discussion</h2>
+                          <hr>
+                        <h2 class = "discussion-title">Discussion Title</h2>
+                        <input class="disc-title-text" name="discussion-title" placeholder="Your title goes here." type="text"><br><br>
+                        <textarea class="disc-text" name="discussion-text" placeholder="Your text goes here." rows="10"></textarea>
+                     <button type="button" class="btn-default disc-button">Create</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      <div class="col-sm-2">
+        <div class="sidebar-nav-right">
+          <div class="navbar navbar-default" role="navigation">
+            <div class="nav">
+              <a class = "brand font-24 block brand-color">Tools</a>
+              <ul class="nav navbar-nav center">
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+                <li><a href="#">Item 4</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -91,10 +218,11 @@
   </div>
 </div>
 
+<!--Discussion End -->
+
 
 </body>
 
+
 <footer>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </footer>
