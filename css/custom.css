@@ -1,5 +1,9 @@
 body{
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.ui-loader {
+  display: none !important;
 }
 
 .font-24{
@@ -42,6 +46,146 @@ body{
   display: block;
 }
 
+/*****Index Page****/
+
+.shoptalk-brand{
+  color: white !important;
+  font-weight: bold;
+}
+.main-nav{
+  height:8% !important;
+  border-radius: 0 !important;
+  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%);
+  border: 1px solid black;
+}
+
+#myCarousel{
+  height: 100%;
+}
+
+.main-header{
+
+  margin-top: 150px;
+  color: white !important;
+}
+.main-header-subtext{
+  font-size: 38px;
+  margin-top: 50px;
+  color: white !important;
+}
+
+.main-jumbo{
+  height: 84.5%;
+  background: linear-gradient( rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75) ), url('../img/background.jpg') no-repeat center center;
+}
+
+
+.main-jumbo-shrink{
+  margin-bottom: 0px;
+}
+
+.navbar-toggle:focus{
+  background-color: #3d3d3d !important;
+  border-color: #5c5c5c !important;
+}
+
+.carousel-control{
+  width: 8%;
+}
+
+footer{
+  background-color: black;
+}
+
+footer p{
+  margin-top:15px;
+  font-weight: bold;
+  color: white !important;
+}
+.signin-container{
+  position: absolute;
+  left:50%;
+  width: 33%;
+  z-index: 10;
+}
+
+#signin{
+  position: relative;
+  left: -50%;
+  width: 100%;
+  height: 0px;
+}
+
+.sign-in{
+  background-color: black;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 0px;
+  height: 50px;
+  line-height: 10px;
+  line-height: 50px;
+  padding-left: 4.75%;
+}
+
+.signin-panel{
+  z-index: 30;
+  margin-top: 130px;
+  margin-left: 5%;
+  width: 90%;
+  height: 250px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px #888888;
+}
+
+.signin-form{
+  background-color: #0a0f14;
+  border-radius: 5px;
+  margin-bottom: 0px !important;
+  padding-bottom: 60px;
+}
+
+.signin-credential{
+  margin-left: 5%;
+  height: 10%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.credential-label{
+  color: white;
+  font-weight: bold;
+  margin-left:5%;
+}
+
+.signin-button{
+  color: white;
+  float: right;
+  margin-top: 4%;
+  margin-right: 5%;
+  background: none;
+  border: 1px solid white;
+  border-radius: 10px;
+  width:70px;
+  height: 30px;
+  text-shadow: none;
+}
+.signin-button:hover{
+  background-color: black;
+  color: white;
+}
+/*Shoptalk Main*/
+
+#homepage{
+  display: block;
+  cursor: pointer;
+}
+
+#discussion-page{
+  display: none;
+  cursor: pointer;
+}
+
 .discussion-header{
   margin-left: 20%;
 }
@@ -57,7 +201,7 @@ body{
 }
 
 .disc-panel{
-  z-index: 310;
+  z-index: 30;
   margin-top: 5%;
   margin-left: 5%;
   width: 90%;
@@ -178,12 +322,75 @@ body{
   right: 10px;
   padding: 3% 1%;
 }
+.dropdown:hover .dropdown-menu {
+        display: block;
+    }
 }
 
 @media only screen and (max-width: 768px) {
   body{
     overflow-y: scroll;
   }
+
+/*index Page*/
+
+.drop-nav li a{
+  font-weight: bold;
+  color: white !important;
+}
+
+.drop-nav li a:hover{
+  color: #777 !important;
+}
+
+#navbar-collapse-1{
+  z-index: 10 !important;
+  position: relative;
+  top: -1px;
+  border: none !important;
+
+}
+
+.signin-container{
+  position: absolute;
+  left:50%;
+  width: 95%;
+  z-index: 10;
+}
+
+.signin-form{
+  background-color: #0a0f14;
+  border-radius: 5px;
+  margin-bottom: 0px !important;
+  padding-bottom: 60px;
+}
+
+
+.signin-button{
+  margin-top: 15px;
+}
+
+.main-header{
+  font-size: 40px !important;
+  margin-top: 150px;
+  color: white !important;
+}
+.main-header-subtext{
+  font-size: 26px !important;
+  margin-top: 50px;
+  color: white !important;
+}
+
+.carousel{
+  width: 99%;
+}
+
+.carousel-control{
+  display: none;
+  width: 0%;
+}
+
+/*Shoptalk Main*/
 
    .sidebar-nav-right{
    width: 100%;
