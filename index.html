@@ -19,16 +19,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand font-24 shoptalk-brand" href="index.html">SynergyGirl</a>
+                <a onclick = "reload()" class="navbar-brand font-24 shoptalk-brand">SynergyGirl</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-collapse-1" >
                 <ul class="nav navbar-nav pull-right drop-nav">
                     <li>
-                        <a class = "shoptalk-brand" href="">Register</a>
+                        <a class = "shoptalk-brand font-16" data-toggle="modal" data-target="#reg-modal">Register</a>
                     </li>
                     <li>
-                      <a class = "shoptalk-brand" data-toggle="collapse" href="#signin" aria-expanded="false" aria-controls="collapseExample">Sign in</a>
+                      <a class = "shoptalk-brand font-16" data-toggle="modal" data-target="#signin-modal">Sign in</a>
                     </li>
                 </ul>
             </div>
@@ -36,23 +36,50 @@
         </div>
         <!-- /.container -->
     </nav>
+
+    <!--registration-->
+    <div class="modal fade" id="reg-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="credential-panel" id = "reg-panel">
+        <form class = "credential-form" action="#" method="post">
+            <h2 class = "sign-in font-24">Registration</h2>
+              <hr style = "margin-top: 0px">
+            <label class = "credential-label" style = "margin-top: 0px">First Name</label>
+            <input class="reg-credential" name="firstname" type="text">
+            <label class = "credential-label">Last Name</label>
+            <input class="reg-credential" name="lastname" type="text">
+            <label class = "credential-label">Email Address</label>
+            <input class="reg-credential" name="email" type="text">
+            <label class = "credential-label">Institution</label>               
+            <input class="reg-credential" name="institution" type="text">
+            <label class = "credential-label">User Name</label>
+            <input class="reg-credential" name="username" type="text">
+            <label class = "credential-label">Password</label>
+            <input class="reg-credential" name="password" type="password">
+            <label class = "credential-label">Confirm Password</label>
+            <input class="reg-credential" name="confirmpassword" type="password">
+         <button type="button" class="btn-default register-button">Register</button>
+        </form>
+      </div>
+    </div>
+    <!--registration end-->
+
     <!--sign in-->
-    <div class = "signin-container">
-        <div class="collapse" id="signin" style = "position: absolute">
-          <div class="card card-block">
-            <div class = "signin-panel">
-              <form class = "signin-form" action="#" method="post">
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="card card-block">
+          <div class="credential-panel signin-panel">
+            <form class = "credential-form" action="#" method="post">
                 <h2 class = "sign-in font-24">Sign in</h2>
                   <hr style = "margin-top: 0px">
                 <label class = "credential-label">User Name</label>
-                <input class="signin-credential" name="discussion-title" type="text"><br>
+                <input class="signin-credential" name="username" type="text"><br>
                 <label class = "credential-label">Password</label>
-                <input class="signin-credential" name="discussion-title" type="password">
+                <input class="signin-credential" name="password" type="password">
              <button type="button" class="btn-default signin-button">Submit</button>
             </form>
-            </div>
           </div>
         </div>
+      </div>
     </div>
     <!--sign in end-->
 
@@ -123,9 +150,14 @@ $(document).ready(function() {
 </script> 
 
 <script>
-$('#myCarousel,#navbar-collapse-1,.navbar').on('click',function(){
-    $('#signin').collapse('hide');
+function reload() {
+    location.reload();
+}
+</script>
+
+<script>
+$('#myCarousel,#signin-modal').on('click',function(){
+    $('.collapse').collapse('hide');
     $('.signin-credential').val('')
 })
 </script>
-
