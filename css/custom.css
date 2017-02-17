@@ -5,31 +5,33 @@ body{
 .ui-loader {
   display: none !important;
 }
-
+.font-16{
+  font-size: 16px;
+}
+.font-20{
+  font-size: 20px;
+}
+.font-22{
+  font-size: 22px;
+}
 .font-24{
 	font-size: 24px;
 }
-
 .font-26{
-	font-size: 24px;
+	font-size: 26px;
 }
-
 .font-28{
 	font-size: 28px;
 }
-
 .font-30{
 	font-size: 30px;
 }
-
 .font-32{
 	font-size: 32px;
 }
-
 .font-34{
 	font-size: 34px;
 }
-
 .font-36{
 	font-size: 36px;
 }
@@ -51,6 +53,7 @@ body{
 .shoptalk-brand{
   color: white !important;
   font-weight: bold;
+  cursor: pointer;
 }
 .main-nav{
   height:8% !important;
@@ -102,12 +105,6 @@ footer p{
   font-weight: bold;
   color: white !important;
 }
-.signin-container{
-  position: absolute;
-  left:50%;
-  width: 33%;
-  z-index: 10;
-}
 
 #signin{
   position: relative;
@@ -126,26 +123,37 @@ footer p{
   line-height: 10px;
   line-height: 50px;
   padding-left: 4.75%;
+
 }
 
-.signin-panel{
+.credential-panel{
   z-index: 30;
-  margin-top: 130px;
-  margin-left: 5%;
-  width: 90%;
-  height: 250px;
+  margin-top: 150px;
+  margin-left: 35%;
+  width: 30%;
+  height: 265px;
   border-radius: 5px;
-  box-shadow: 0px 1px 5px #888888;
+}
+.signin-panel{
+
+margin-left: 15%;
+width: 70%;
+
 }
 
-.signin-form{
+#reg-panel{
+  margin-top: 48px;
+}
+
+.credential-form{
   background-color: #0a0f14;
   border-radius: 5px;
   margin-bottom: 0px !important;
-  padding-bottom: 60px;
+  padding-bottom: 65px;
+  box-shadow: 0px 0px 5px #888888;
 }
 
-.signin-credential{
+.signin-credential, .reg-credential{
   margin-left: 5%;
   height: 10%;
   width:90%;
@@ -156,12 +164,13 @@ footer p{
   color: white;
   font-weight: bold;
   margin-left:5%;
+  margin-top: 7px;
 }
 
-.signin-button{
+.signin-button, .register-button{
   color: white;
   float: right;
-  margin-top: 4%;
+  margin-top: 4.5%;
   margin-right: 5%;
   background: none;
   border: 1px solid white;
@@ -350,21 +359,31 @@ footer p{
   border: none !important;
 
 }
-
-.signin-container{
-  position: absolute;
-  left:50%;
-  width: 95%;
-  z-index: 10;
-}
-
-.signin-form{
+.credential-form{
   background-color: #0a0f14;
   border-radius: 5px;
   margin-bottom: 0px !important;
   padding-bottom: 60px;
 }
 
+.credential-panel{
+  margin-left: 7.5%;
+  width: 85%;
+  height: 265px;
+}
+
+.credential-label{
+  font-size: 12px;
+}
+
+#reg-panel{
+  margin-top: 22.5px;
+}
+
+.signin-panel{
+  margin-left: 2.5%;
+  width: 95%;
+}
 
 .signin-button{
   margin-top: 15px;
