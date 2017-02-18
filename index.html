@@ -40,7 +40,7 @@
     <!--registration-->
     <div class="modal fade" id="reg-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="credential-panel" id = "reg-panel">
-        <form class = "credential-form" action="#" method="post">
+        <form class = "credential-form" id = "reg-form" action="chat.php" method="post">
             <h2 class = "sign-in font-24">Registration</h2>
               <hr style = "margin-top: 0px">
             <label class = "credential-label" style = "margin-top: 0px">First Name</label>
@@ -54,10 +54,10 @@
             <label class = "credential-label">User Name</label>
             <input class="reg-credential" name="username" type="text">
             <label class = "credential-label">Password</label>
-            <input class="reg-credential" name="password" type="password">
+            <input class="reg-credential passpop" id = "password" name="password" type="password" data-container="body" data-toggle="popover" data-placement="top" data-content="Password must be at least 8 characters long, contain at least one letter and at least 1 number.">
             <label class = "credential-label">Confirm Password</label>
             <input class="reg-credential" name="confirmpassword" type="password">
-         <button type="button" class="btn-default register-button">Register</button>
+         <input type = "button" class="btn-default register-button" value = "Register" onclick = "return validateForm();">
         </form>
       </div>
     </div>
@@ -72,10 +72,10 @@
                 <h2 class = "sign-in font-24">Sign in</h2>
                   <hr style = "margin-top: 0px">
                 <label class = "credential-label">User Name</label>
-                <input class="signin-credential" name="username" type="text"><br>
+                <input class="signin-credential" name="username" type="text" required><br>
                 <label class = "credential-label">Password</label>
-                <input class="signin-credential" name="password" type="password">
-             <button type="button" class="btn-default signin-button">Submit</button>
+                <input class="signin-credential" name="password" type="password" required>
+             <input type="submit" class="btn-default signin-button" value = "Submit">
             </form>
           </div>
         </div>
@@ -156,8 +156,102 @@ function reload() {
 </script>
 
 <script>
-$('#myCarousel,#signin-modal').on('click',function(){
+$('#myCarousel').on('click',function(){
     $('.collapse').collapse('hide');
-    $('.signin-credential').val('')
 })
+</script>
+
+<script>
+$(function(){
+    $("#password").focus(function() {
+  $('[data-toggle="popover"]').popover()
+});
+});
+</script>
+
+<script>
+$('.passpop').popover().click(function () {
+    setTimeout(function () {
+        $('.passpop').popover('hide');
+    }, 3000);
+});
+</script>
+
+    
+<script>    
+    function validateForm() {
+        var fname = document.forms["reg-form"]["firstname"].value;
+        var lname = document.forms["reg-form"]["lastname"].value;
+        var email = document.forms["reg-form"]["email"].value;
+        var inst = document.forms["reg-form"]["institution"].value;
+        var user = document.forms["reg-form"]["username"].value;
+        var pass = document.forms["reg-form"]["password"].value;
+        var cpass = document.forms["reg-form"]["confirmpassword"].value;
+        if (fname == "") {
+            error()
+            //alert("Name must be filled out");
+            return false;
+        } 
+        else if (lname == "") {
+            error()
+            //alert("Email must be filled out");
+            return false;
+        }
+        else if (email == "") {
+            error()
+            //alert("Email must be filled out");
+            return false;
+        }
+        else if (inst == "") {
+            error()
+            //alert("Email must be filled out");
+            return false;
+        }
+        else if (user == "") {
+            error()
+            //alert("Email must be filled out");
+            return false;
+        }else if (pass == "") {
+            error()
+            //alert("Email must be filled out");
+            return false;
+        } else if (cpass== "") {
+            error()
+            //alert("Message must be filled out");
+            return false;
+        } 
+        else{
+                var p = document.forms["reg-form"]["password"].value
+                if (p.length < 8) {
+                    alert("Your password must be at least 8 characters"); 
+                    return false;
+                }
+                if(p.search(/[a-z]/i) < 0) {
+                    alert("Your password must contain at least one letter.");
+                    return false;
+                }
+                if (p.search(/[0-9]/) < 0) {
+                    alert("Your password must contain at least one digit.");
+                    return false;
+                }
+                else{
+                    if(pass != cpass){
+                    alert("Your passwords do not match.");
+                    return false;
+                    }
+                    else{
+                        return true;
+                        submitForm();
+                    }
+                }
+        }
+    }
+    
+    function submitForm() {
+        document.getElementById("reg-form").submit();
+    }
+    
+    function error() {
+        alert("All fields are required.");
+    }
 </script>
