@@ -1,0 +1,550 @@
+body{
+  overflow-y: auto;
+}
+
+.ui-loader {
+  display: none !important;
+}
+input:invalid {
+    box-shadow: none;
+}
+.font-16{
+  font-size: 16px;
+}
+.font-20{
+  font-size: 20px;
+}
+.font-22{
+  font-size: 22px;
+}
+.font-24{
+	font-size: 24px;
+}
+.font-26{
+	font-size: 26px;
+}
+.font-28{
+	font-size: 28px;
+}
+.font-30{
+	font-size: 30px;
+}
+.font-32{
+	font-size: 32px;
+}
+.font-34{
+	font-size: 34px;
+}
+.font-36{
+	font-size: 36px;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.inline{
+  display: inline;
+}
+
+.block{
+  display: block;
+}
+
+/*****Index Page****/
+
+.shoptalk-brand{
+  color: white !important;
+  font-weight: bold;
+  cursor: pointer;
+}
+.main-nav{
+  height:8% !important;
+  border-radius: 0 !important;
+  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%);
+  border: 1px solid black;
+}
+
+#myCarousel{
+  height: 100%;
+}
+
+.main-header{
+
+  margin-top: 150px;
+  color: white !important;
+}
+.main-header-subtext{
+  font-size: 38px;
+  margin-top: 50px;
+  color: white !important;
+}
+
+.main-jumbo{
+  height: 84.5%;
+  background: linear-gradient( rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75) ), url('../img/background.jpg') no-repeat center center;
+}
+
+
+.main-jumbo-shrink{
+  margin-bottom: 0px;
+}
+
+.navbar-toggle:focus{
+  background-color: #3d3d3d !important;
+  border-color: #5c5c5c !important;
+}
+
+.carousel-control{
+  width: 8%;
+}
+
+footer{
+  background-color: black;
+}
+
+footer p{
+  margin-top:15px;
+  font-weight: bold;
+  color: white !important;
+}
+
+#signin{
+  position: relative;
+  left: -50%;
+  width: 100%;
+  height: 0px;
+}
+
+.sign-in{
+  background-color: black;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 0px;
+  height: 50px;
+  line-height: 10px;
+  line-height: 50px;
+  padding-left: 4.75%;
+
+}
+
+.credential-panel{
+  z-index: 30;
+  margin-top: 150px;
+  margin-left: 35%;
+  width: 30%;
+  height: 265px;
+  border-radius: 5px;
+}
+.signin-panel{
+
+margin-left: 15%;
+width: 70%;
+
+}
+
+#reg-panel{
+  margin-top: 48px;
+}
+
+.credential-form{
+  background-color: #0a0f14;
+  border-radius: 5px;
+  margin-bottom: 0px !important;
+  padding-bottom: 65px;
+  box-shadow: 0px 0px 5px #888888;
+}
+
+.signin-credential, .reg-credential, .newmail-credential{
+  margin-left: 5%;
+  height: 10%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.newmail-textarea, .viewmail-textarea{
+  margin-left: 5%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.credential-label{
+  color: white;
+  font-weight: bold;
+  margin-left:5%;
+  margin-top: 7px;
+}
+
+.signin-button, .register-button{
+  color: white;
+  float: right;
+  margin-top: 4.5%;
+  margin-right: 5%;
+  background: none;
+  border: 1px solid white;
+  border-radius: 10px;
+  width:70px;
+  height: 30px;
+  text-shadow: none;
+}
+.signin-button:hover{
+  background-color: black;
+  color: white;
+}
+/*Shoptalk Main*/
+
+#homepage{
+  display: block;
+  cursor: pointer;
+}
+
+#discussion-page{
+  display: none;
+  cursor: pointer;
+}
+
+.discussion-header{
+  margin-left: 20%;
+}
+
+.new-discussion-button{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  position: relative;
+  border-radius: 5%;
+  width: 40px;
+  height: 40px;
+}
+
+.disc-panel{
+  z-index: 30;
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 90%;
+  height: 450px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #888888;
+}
+
+.new-disc-header{
+  padding-top: 3%;
+  margin-left: 5%;
+}
+
+.discussion-title{
+  margin-left: 5%;
+}
+
+.disc-title-text{
+  margin-left: 5%;
+  height: 8%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.disc-text{
+  margin-left: 5%;
+  height: 45%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.disc-button{
+  float: right;
+  margin-top: 1%;
+  margin-right: 5%;
+}
+
+.brand{
+	font-weight: bold;
+}
+
+.chat-area{
+  margin-top:1%;
+  height: 90%;
+  max-width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #888888;
+}
+.chat-text{
+  margin-top:1.5%;
+  height: 5%;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.stripes > tbody > tr:nth-of-type(odd) {
+  background-color: #193140;
+}
+
+/* make sidebar nav vertical */
+@media only screen and (min-width: 768px) {
+  .navbar{
+    height: 100%;
+    margin-bottom: 0px;
+  }
+
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .sidebar-nav-right .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav-right .navbar ul {
+    float: none;
+  }
+  .sidebar-nav-right .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav-right .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav-right .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .block{
+  display: block;
+  text-align: center;
+}
+
+.brand-color {
+  color: #777;
+}
+.col-sm-2{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.btn{
+  position: relative;
+  width: 100%;
+  top: 11px;
+  right: 10px;
+  padding: 3% 1%;
+}
+.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+  body{
+    overflow-y: scroll;
+  }
+
+/*index Page*/
+
+.drop-nav li a{
+  font-weight: bold;
+  color: white !important;
+}
+
+.drop-nav li a:hover{
+  color: #777 !important;
+}
+
+#navbar-collapse-1{
+  z-index: 10 !important;
+  position: relative;
+  top: -1px;
+  border: none !important;
+
+}
+.credential-form{
+  background-color: #0a0f14;
+  border-radius: 5px;
+  margin-bottom: 0px !important;
+  padding-bottom: 60px;
+}
+
+.credential-panel{
+  margin-left: 7.5%;
+  width: 85%;
+  height: 265px;
+}
+
+.credential-label{
+  font-size: 12px;
+}
+
+#reg-panel{
+  margin-top: 22.5px;
+}
+
+.signin-panel{
+  margin-left: 2.5%;
+  width: 95%;
+}
+
+.signin-button{
+  margin-top: 15px;
+}
+
+.main-header{
+  font-size: 40px !important;
+  margin-top: 150px;
+  color: white !important;
+}
+.main-header-subtext{
+  font-size: 26px !important;
+  margin-top: 50px;
+  color: white !important;
+}
+
+.carousel{
+  width: 99%;
+}
+
+.carousel-control{
+  display: none;
+  width: 0%;
+}
+
+/*Shoptalk Main*/
+
+   .sidebar-nav-right{
+   width: 100%;
+	 position: fixed;
+	 bottom: 0px;
+ }
+
+    .sidebar-nav-right .navbar ul li {
+    display: inline-block;
+}
+    .sidebar-nav-right .navbar ul li a{
+    text-align: center;
+    margin: auto;
+    display: inline-block;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-align: center;
+}
+.block{
+  display: block;
+  text-align: center;
+}
+
+.brand-color {
+  color: #777;
+}
+.navbar{
+  margin-bottom: 0px;
+}
+.chat-area{
+  margin-top:1%;
+  height: 70%;
+  max-width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #888888;
+}
+.chat-text{
+  margin-top:1%;
+  height: 5%;
+  width:81%;
+  border: 1px solid black;
+}
+.col-sm-10{
+  width: 83.33333333%;
+  padding-left: 15px;
+  padding-right: 0px;
+  display: inline;
+}
+.col-sm-2{
+  width: 16.66666667%;
+  padding-left: 0px;
+  padding-right: 0px;
+  display: inline;
+}
+.btn{
+  position: relative;
+  height: 5%;
+  top:0px;
+  line-height: 0px;
+  padding: 10px 1%;
+  margin-left: .5%;
+  width: 11%;
+}
+
+.discussion-header{
+  font-size: 22px;
+  margin-left: 0%;
+}
+
+.new-discussion-button{
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -38px;
+  position: relative;
+  border-radius: 5%;
+  width: 30px;
+  height: 30px;
+  float: right;
+}
+
+.smaller-row{
+  height: 15%;
+}
+
+.disc-panel{
+  margin-left: auto;
+  margin-right: auto;
+  width: 98%;
+  height: 330px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #888888;
+
+}
+
+.discussion-title{
+  margin-left: 5%;
+  font-size: 22px;
+}
+
+.disc-title-text{
+  margin-left: 5%;
+  height: 8%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.disc-text{
+  margin-left: 5%;
+  height: 30%;
+  width:90%;
+  border: 1px solid black;
+}
+
+.disc-button{
+  float: right;
+  margin-top: 7%;
+  margin-right: 5%;
+}
+
+}
