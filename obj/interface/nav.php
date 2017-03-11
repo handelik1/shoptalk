@@ -23,13 +23,13 @@
          $str .=           '<span class="icon-bar"></span>';
          $str .=           '<span class="icon-bar"></span>';
          $str .=         '</button>';
-         $str .=         '<span class="visible-xs navbar-brand">ShopTalk</span>';
+         $str .=         '<span class="visible-xs navbar-brand" onclick="stageHome();">ShopTalk</span>';
          $str .=       '</div>';
          $str .=       '<div class="navbar-collapse collapse sidebar-navbar-collapse">';
          $str .=         '<ul class="nav navbar-nav">';
-         $str .=           '<li id="nav_home_li" onclick="stageHome();"><a id="nav-home" class="brand font-24">ShopTalk</a></li>';
-         $str .=           '<li id="nav_chat_li" onclick="stageChat();"><a id="nav-chat">Chat</a></li>';
-         $str .=           '<li id="nav_posts_li" onclick="stagePost();"><a id="nav-post">Bulletin</a></li>';
+         $str .=           '<li id="nav_home_li" onclick="stageHome();"><a id="nav-home" class="brand font-26">ShopTalk</a></li>';
+         $str .=           '<li id="nav_chat_li" onclick="stageChat();"><a id="nav-chat" class = "font-18">Chat</a></li>';
+         $str .=           '<li id="nav_posts_li" onclick="stagePosts();"><a id="nav-post" class = "font-18">Bulletin</a></li>';
 /*
          $str .=           '<li class="dropdown">';
          $str .=             '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>';
@@ -43,7 +43,7 @@
          $str .=             '</ul>';
          $str .=           '</li>';
 */
-         $str .=           '<li id="nav_acct_li" onclick="stageAccount();"><a id="nav-acct">Account</a></li>';
+         $str .=           '<li id="nav_acct_li" onclick="stageAccount();"><a id="nav-acct" class = "font-18">Account</a></li>';
 /*
          $str .=           '<li class="dropdown">';
          $str .=             '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Search <b class="caret"></b></a>';
@@ -58,7 +58,7 @@
          $str .=             '</ul>';
          $str .=           '</li>';
 */
-         $str .=           '<li id="nav_logout_li" onclick="logout();"><a id="nav-post">Sign out</a></li>';
+         $str .=           '<li id="nav_logout_li" onclick="logout();"><a id="nav-post" class = "font-18">Sign out</a></li>';
          $str .=         '</ul>';
          $str .=       '</div>';
          $str .=     '</div>';
