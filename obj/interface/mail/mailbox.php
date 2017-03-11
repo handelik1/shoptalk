@@ -99,18 +99,18 @@
          $str .=   '<div class="credential-panel" id="viewmail-panel">';
          $str .=     '<div class="credential-form" id="viewmail-form">';
 												#  Message Subject goes here
-         $str .=       '<h2 id="viewmail_subject" class="sign-in font-24"></h2>';
+         $str .=       '<h2 id="viewmail_subject" class="sign-in font-24 modal-header mail_subject"></h2>';
          $str .=       '<hr style="margin-top: 0px"></hr>';
 												#  To or From goes here
          $str .=       '<label id="viewmail_label" class="credential-label" style="margin-top: 0px"></label>';
 												#  Recipient or Sender goes here
          $str .=       '<input id="viewmail_username" class="reg-credential" type="text" readonly>';
 
-         $str .=       '<label class="credential-label">Date</label>';
+         $str .=       '<label class="credential-label">Date:</label>';
 												#  Send date goes here
          $str .=       '<input id="viewmail_date" class="reg-credential" type="text" readonly>';
 
-         $str .=       '<textarea class="viewmail-textarea" rows="4" cols="50" id="viewmail_body" readonly></textarea>';
+         $str .=       '<textarea class="viewmail-textarea" rows="8" cols="50" id="viewmail_body" readonly></textarea>';
 
          $str .=     '</div>';
          $str .=   '</div>';
@@ -124,16 +124,17 @@
          $str  = '<div class="modal fade" id="newmail-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
          $str .=   '<div class="credential-panel" id="newmail-panel">';
          $str .=     '<div class="credential-form" id="newmail-form">';
-         $str .=       '<h2 class="sign-in font-24">New Message</h2>';
-         $str .=       '<hr style="margin-top: 0px"></hr>';
+         $str .=       '<h2 class="sign-in font-24 modal-header mail_subject" id = "modal-header">New Message</h2>';
+         $str .=       '</br>';
 
-         $str .=       '<label class="credential-label" style="margin-top: 0px">To</label>';
+         $str .=       '<label class="credential-label" style="margin-top: 0px">To:</label>';
          $str .=       '<input class="newmail-credential" id="newmail_receiver" type="text">';
 
-         $str .=       '<label class="credential-label">Subject</label>';
+         $str .=       '<label class="credential-label">Subject:</label>';
          $str .=       '<input class="newmail-credential" id="newmail_subject" type="text">';
 
-         $str .=       '<textarea class="newmail-textarea" rows="4" cols="50" id="newmail_body"></textarea>';
+         $str .=       '<label class="credential-label">Message:</label>';
+         $str .=       '<textarea class="newmail-textarea" rows="8" cols="50" id="newmail_body"></textarea>';
 
          $str .=       '<input type="submit" class="btn-default register-button" id="newmail_send" value="Send" onclick="sendMail();">';
          $str .=     '</div>';
@@ -149,7 +150,7 @@
          $str .=   '<div class="credential-panel" id="delmail-panel">';
          $str .=     '<div class="credential-form" id="delmail-form">';
 												#  Delete Selected Message/Delete Selected Messages goes here
-         $str .=       '<h2 id="delmail_header" class="sign-in font-24"></h2>';
+         $str .=       '<h2 id="delmail_header" class="sign-in font-24 modal-header mail_subject"></h2>';
          $str .=       '<hr style="margin-top: 0px"></hr>';
 												#  "Are you sure?" message... goes here
          $str .=       '<label id="delmail_label" class="credential-label" style="margin-top: 0px"></label>';
