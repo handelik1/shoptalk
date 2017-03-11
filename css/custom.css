@@ -1,15 +1,34 @@
-body{
-  overflow-y: auto;
+html{
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+    overflow-y: auto;
 }
 
+body{
+    overflow-y: auto;
+    margin: 0px;
+    position: relative;
+    min-height: 100%;
+    height: auto;
+}
 .ui-loader {
   display: none !important;
 }
 input:invalid {
     box-shadow: none;
 }
+.font-12{
+  font-size: 12px;
+}
+.font-14{
+  font-size: 14px;
+}
 .font-16{
   font-size: 16px;
+}
+.font-18{
+  font-size: 18px;
 }
 .font-20{
   font-size: 20px;
@@ -61,30 +80,35 @@ input:invalid {
 .main-nav{
   height:8% !important;
   border-radius: 0 !important;
-  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%);
-  border: 1px solid black;
+  background-image: linear-gradient(to bottom, #000000, #000000 100%);
+  border: 1px solid #000000;
 }
 
 #myCarousel{
   height: 100%;
 }
 
-.main-header{
+.carousel-indicators li{
+  background-color: black;
+  border: 1px solid black;
+}
 
-  margin-top: 150px;
-  color: white !important;
+.main-header{
+  margin-top: 120px;
+  color: #FFFFFF !important;
 }
 .main-header-subtext{
   font-size: 38px;
   margin-top: 50px;
-  color: white !important;
+  color: #FFFFFF !important;
 }
 
 .main-jumbo{
+  position: relative;
   height: 84.5%;
-  background: linear-gradient( rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75) ), url('../img/background.jpg') no-repeat center center;
+  background: linear-gradient( rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) ), url('../img/background.jpg') no-repeat center;
+  background-size: 100% 100%;
 }
-
 
 .main-jumbo-shrink{
   margin-bottom: 0px;
@@ -100,7 +124,7 @@ input:invalid {
 }
 
 footer{
-  background-color: black;
+  background-color: #000000;
 }
 
 footer p{
@@ -123,7 +147,6 @@ footer p{
   border-top-right-radius: 5px;
   margin-bottom: 0px;
   height: 50px;
-  line-height: 10px;
   line-height: 50px;
   padding-left: 4.75%;
 
@@ -138,22 +161,21 @@ footer p{
   border-radius: 5px;
 }
 .signin-panel{
-
 margin-left: 15%;
 width: 70%;
 
 }
 
 #reg-panel{
-  margin-top: 48px;
+  margin-top: 30px;
 }
 
 .credential-form{
-  background-color: #0a0f14;
+  background-color: #00b800;
   border-radius: 5px;
   margin-bottom: 0px !important;
-  padding-bottom: 65px;
-  box-shadow: 0px 0px 5px #888888;
+  padding-bottom: 35px;
+  box-shadow: 0px 0px 5px white;
 }
 
 .signin-credential, .reg-credential, .newmail-credential{
@@ -169,30 +191,149 @@ width: 70%;
   border: 1px solid black;
 }
 
+.viewmail-textarea{
+  margin-top: 10px;
+}
+
 .credential-label{
-  color: white;
+  color: black;
   font-weight: bold;
   margin-left:5%;
   margin-top: 7px;
 }
 
 .signin-button, .register-button{
-  color: white;
+  color: black;
   float: right;
   margin-top: 4.5%;
   margin-right: 5%;
   background: none;
-  border: 1px solid white;
-  border-radius: 10px;
-  width:70px;
+  border: 1px solid black;
+  border-radius: 6px;
+  width:75px;
   height: 30px;
+  font-weight: bold;
   text-shadow: none;
 }
 .signin-button:hover{
-  background-color: black;
+  background-color: #00a900;
   color: white;
+  border-color: black;
 }
-/*Shoptalk Main*/
+
+#login_notice, #reqacc_notice{
+  border: none;
+}
+
+
+/****Shoptalk Main****/
+
+
+.navbar-style{
+  background: #00cc00;
+  border-radius: 0px;
+  border: none;
+}
+.brand-color {
+  color: white !important;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+.brand-color:hover{
+  text-decoration: none;
+  color: black;
+}
+
+#reqacc_submit{
+  margin-top: 17px;
+}
+
+#newmail_send, #newgroup_save{
+  margin-top: 4%;
+}
+
+#newmail_send:hover, #newgroup_save:hover{
+  border: 1px solid black;
+  background-color: #cccccc;
+  color: black;
+}
+
+.shop-talk-unread-msg td{
+  font-weight: bold;
+}
+
+#newmail-form{
+  padding-bottom: 65px;
+  border-radius: 0px !important;
+  background-color: #e5e5e5;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+}
+
+#viewmail-form{
+  border-radius: 0px !important;
+  background-color: #e5e5e5;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+}
+
+#invitechat-form{
+  border-radius: 0px !important;
+  background-color: #e5e5e5;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  padding-bottom: 45px !important;
+}
+
+#delmail-form{
+  border-radius: 0px !important;
+  background-color: #e5e5e5;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+}
+
+#newchat-form{
+  border-radius: 0px !important;
+  background-color: #e5e5e5;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  padding-bottom: 1px !important;
+}
+
+#delmail_submit{
+  margin-top: -2%;
+}
+
+#viewmail-panel{
+  margin-top: 5% !important;
+}
+
+.modal-header{
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  background-color: #00cc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
+  border-bottom: 1px solid black;
+}
+
+.mail_subject{
+  line-height: 23px !important;
+}
+
+.chat_subject{
+  line-height: 23px !important;
+}
+
+#newmail-panel{
+  margin-top: 5%;
+}
+
+#newgroup_tagfield{
+  max-height: 160px;
+  height: 88px;
+  overflow-y: auto; 
+}
 
 #homepage{
   display: block;
@@ -260,24 +401,163 @@ width: 70%;
 .brand{
 	font-weight: bold;
 }
+/***Chat Session****/
 
 .chat-area{
-  margin-top:1%;
-  height: 90%;
-  max-width: 100%;
+  height: 42%;
+  max-width: 90%;
+  display: block;
+  margin: auto;
+  margin-top: -3%;
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 5px 5px 5px #888888;
+  overflow-y: auto; 
 }
+
+#blackboard{
+  height: 50%;
+  width:100%;
+}
+
+#chatcanvas{
+  width: 100%;
+  height:95%;
+}
+
 .chat-text{
   margin-top:1.5%;
+  margin-left: 6%;
   height: 5%;
-  width: 100%;
+  width: 94%;
   border: 1px solid black;
+}
+
+.chat-transcript-header-row{
+  margin-left: auto;
+  margin-right: auto;
+  border-top-left-radius: 5px; 
+  border-top-right-radius: 5px;
+  width: 90%;
+  height: 25px;
+  background-image: linear-gradient(#00cc00 , #b2efb2);
+}
+#transcript_table{
+  margin-top: 15px;
+}
+
+#transcript_table tr td{
+  border: none;
+
+}
+.shoptalk-chat-speaker-col{
+  border-bottom: #b2efb2 !important;
+}
+.shoptalk-chat-text-col{
+  border-bottom: #b2efb2 !important;
+}
+
+.chat-invite-text{
+  width: 44%;
+  padding-right: 2px !important;
+  padding-left: 4px !important;
+}
+.chat-invite-label{
+  width: 15%;
+  padding-right: 2px !important;
+  padding-left: 18px !important;
+}
+
+#chatinvite{
+  margin-top: -20px;
+}
+
+.chat-wrapper{
+  overflow-y: auto;
+  height: 50px; 
+}
+
+.user-invitation{
+  padding-left: 23px !important;
+  padding-right: 12px !important;
+}
+
+#member-name{
+  margin-top: -5px;
+  padding-left: 21px;
+  padding-top: 5px;
+  width: 100%;
+  border-top: 1px solid black;
+}
+
+#invitechat-panel{
+  margin-left: 38%;
+  width: 25%;
+}
+
+#invitechat_save{
+  margin-top: 8px;
+}
+
+.chat-invite-table tr td{
+  border-top: none !important;
 }
 
 .stripes > tbody > tr:nth-of-type(odd) {
   background-color: #193140;
+}
+
+/******Account*******/
+#profile_panel table td{
+    border: none;
+}
+
+#profile_panel{
+  margin-top: -15%;
+}
+
+#profile_panel input[type = 'text']{
+  border-radius: 5px;
+}
+
+#profile_panel select{
+  border-radius: 5px;
+}
+
+#acc_submit{
+  margin-top: 10px;
+}
+
+/******Chat******/
+.chat-table{
+  margin-top: -10%;
+  margin-bottom: 10px;
+}
+
+.chat-table tr td{
+  padding: 0px !important;
+  border: none !important;
+}
+
+.help-button{
+  line-height: 40px;
+}
+.quick-set{
+  width: 150px;
+}
+
+#newchat_title{
+  margin-right: 20%;
+  width: 90%;
+}
+.chat-button{
+  width: 55%;
+  margin-right: 26%;
+  margin-top: 2%;
+}
+.chat-button:hover{
+  border: 1px solid black;
+  background-color: #b7b7b7;
 }
 
 /* make sidebar nav vertical */
@@ -286,6 +566,8 @@ width: 70%;
     height: 100%;
     margin-bottom: 0px;
   }
+
+
 
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
@@ -304,7 +586,15 @@ width: 70%;
   .sidebar-nav .navbar li a {
     padding-top: 12px;
     padding-bottom: 12px;
+    color:white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
+    font-weight: bold;
   }
+
+  .sidebar-nav .navbar li a:hover {
+    color: #b2b2b2;
+  }
+
 
   .sidebar-nav-right .navbar .navbar-collapse {
     padding: 0;
@@ -323,14 +613,17 @@ width: 70%;
   .sidebar-nav-right .navbar li a {
     padding-top: 12px;
     padding-bottom: 12px;
+    color:white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
+    font-weight: bold;
+  }
+
+  .sidebar-nav-right .navbar li a:hover {
+    color: #b2b2b2;
   }
   .block{
   display: block;
   text-align: center;
-}
-
-.brand-color {
-  color: #777;
 }
 .col-sm-2{
   padding-left: 0px;
@@ -338,7 +631,7 @@ width: 70%;
 }
 .btn{
   position: relative;
-  width: 100%;
+  width: 68%;
   top: 11px;
   right: 10px;
   padding: 3% 1%;
@@ -364,6 +657,30 @@ width: 70%;
   color: #777 !important;
 }
 
+#nav-home{
+  display: none;
+}
+
+.navbar-brand{
+  font-size: 26px;
+  font-weight: bold;
+  color: white !important;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.navbar-toggle{
+  border: 1px solid black !important;
+  background-color: white;
+}
+
+.icon-bar{
+  background-color: black !important;
+}
+
+.navbar-toggle:focus{
+  background-color: #999999 !important;
+}
+
 #navbar-collapse-1{
   z-index: 10 !important;
   position: relative;
@@ -372,10 +689,10 @@ width: 70%;
 
 }
 .credential-form{
-  background-color: #0a0f14;
+  background-color: #00b800;
   border-radius: 5px;
   margin-bottom: 0px !important;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
 }
 
 .credential-panel{
@@ -386,10 +703,6 @@ width: 70%;
 
 .credential-label{
   font-size: 12px;
-}
-
-#reg-panel{
-  margin-top: 22.5px;
 }
 
 .signin-panel{
@@ -404,12 +717,10 @@ width: 70%;
 .main-header{
   font-size: 40px !important;
   margin-top: 150px;
-  color: white !important;
 }
 .main-header-subtext{
   font-size: 26px !important;
   margin-top: 50px;
-  color: white !important;
 }
 
 .carousel{
@@ -422,11 +733,32 @@ width: 70%;
 }
 
 /*Shoptalk Main*/
+  .sidebar-nav{
+    border-bottom: 1px solid black;
+  }
+
+  .sidebar-navbar-collapse{
+    border-color: black !important;
+  }
+
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color:white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
+    font-weight: bold;
+  }
+
+  .sidebar-nav .navbar li a:hover {
+    color: #b2b2b2;
+  }
 
    .sidebar-nav-right{
    width: 100%;
-	 position: fixed;
-	 bottom: 0px;
+   position: fixed;
+   left: 0; 
+   bottom: 0px;
+   border-top: 1px solid black;
  }
 
     .sidebar-nav-right .navbar ul li {
@@ -436,6 +768,8 @@ width: 70%;
     text-align: center;
     margin: auto;
     display: inline-block;
+    color: black;
+    font-weight: bold;
 }
 .center {
     margin-left: auto;
@@ -449,26 +783,25 @@ width: 70%;
   text-align: center;
 }
 
-.brand-color {
-  color: #777;
-}
 .navbar{
   margin-bottom: 0px;
 }
 .chat-area{
-  margin-top:1%;
-  height: 70%;
+  height: 65%;
   max-width: 100%;
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 5px 5px 5px #888888;
+  overflow-y: auto; 
 }
 .chat-text{
   margin-top:1%;
+  margin-left: 0%;
   height: 5%;
-  width:81%;
+  width:76%;
   border: 1px solid black;
 }
+
 .col-sm-10{
   width: 83.33333333%;
   padding-left: 15px;
@@ -488,7 +821,7 @@ width: 70%;
   line-height: 0px;
   padding: 10px 1%;
   margin-left: .5%;
-  width: 11%;
+  width: 14%;
 }
 
 .discussion-header{
@@ -545,6 +878,117 @@ width: 70%;
   float: right;
   margin-top: 7%;
   margin-right: 5%;
+}
+
+#newmail-panel{
+  margin-top: 20%;
+}
+
+#viewmail-panel{
+  margin-top: 20% !important;
+}
+
+.tool-item{
+  color: white !important;
+  font-size: 17px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
+}
+
+
+/*****Account******/
+
+#acc_settings{
+  font-size: 24px;
+}
+
+#acc_submit{
+  margin-top: 5px;
+}
+.acc_name{
+  font-size: 22px;
+}
+.acc_user{
+  font-size: 18px;
+}
+#profile_panel tr td{
+  padding-bottom: 5px;
+  padding-top:5px;
+}
+#account-table{
+  margin-top: -10%;
+}
+
+/***MAILBOX****/
+
+#delmail_submit{
+  margin-top: -4%;
+}
+
+/*****Chat*****/
+
+.chat-button{
+  width: 100%;
+  margin-right: 6%;
+  margin-top: 5%;
+  height: 80%;
+}
+
+/***Chat Session****/
+
+.chat-area{
+  margin-top: 7%;
+  height: 35%;
+  max-width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+#blackboard{
+  height: 27%;
+  width:100%;
+}
+
+#chatcanvas{
+  width: 100%;
+  height:100%;
+}
+
+.chat-transcript-header-row{
+  position: relative;
+  top: 46px;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 1px solid black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width:99.5%;
+  height: 25px;
+  background-image: linear-gradient(#00cc00 , #b2efb2);
+}
+
+.chat-invite-label{
+  padding-top: 14px !important;
+}
+
+#invitechat-panel{
+  margin-left: 7%;
+  width: 85%;
+}
+#invitechat_save{
+  margin-top: 8px;
+}
+
+.chat-table tr td{
+  border: 
+}
+
+.invitechat-credential{
+  width: 100%;
+}
+
+.chat-invite-text{
+  width: 66%;
 }
 
 }
