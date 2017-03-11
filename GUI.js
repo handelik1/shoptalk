@@ -37,6 +37,7 @@ function begin()
 //  In any case, we've got to figure out which elements to hide/reveal now, given the new dimensions.
 function layoutMode(m)
   {
+/*
     switch(m)
       {
         case '': 												//  Smartphone view
@@ -44,6 +45,336 @@ function layoutMode(m)
                  elem.setAttribute('hidden', true);				//  Hide the left-hand nav homepage item
                  break;
       }
+*/
+  }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//   A C C O U N T : T O G G L E S
+
+//  Make the profile editing panel visible
+function showProfile()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('showProfile()');
+
+    var profile = document.getElementById('profile_panel');
+    var profileTab = document.getElementById('profile_tab');
+    var tabLink;
+    if(profile != null)
+      profile.removeAttribute('hidden');
+    if(profileTab != null)
+      {
+        profileTab.className = 'active';
+        tabLink = profileTab.getElementsByTagName('a')[0];
+        tabLink.onclick = function() {};
+      }
+  }
+
+//  Hide the profile editing panel
+function hideProfile()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('hideProfile()');
+
+    var profile = document.getElementById('profile_panel');
+    var profileTab = document.getElementById('profile_tab');
+    var tabLink;
+    if(profile != null)
+      profile.setAttribute('hidden', true);
+    if(profileTab != null)
+      {
+        profileTab.removeAttribute('class');
+        tabLink = profileTab.getElementsByTagName('a')[0];
+        tabLink.onclick = function() { hideGroups(); showProfile(); };
+      }
+  }
+
+//  Make the groups editing panel visible
+function showGroups()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('showGroups()');
+
+    var groups = document.getElementById('groups_panel');
+    var groupsTab = document.getElementById('groups_tab');
+    var tabLink;
+    if(groups != null)
+      groups.removeAttribute('hidden');
+    if(groupsTab != null)
+      {
+        groupsTab.className = 'active';
+        tabLink = groupsTab.getElementsByTagName('a')[0];
+        tabLink.onclick = function() {};
+      }
+  }
+
+//  Hide the groups editing panel
+function hideGroups()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('hideGroups()');
+
+    var groups = document.getElementById('groups_panel');
+    var groupsTab = document.getElementById('groups_tab');
+    var tabLink;
+    if(groups != null)
+      groups.setAttribute('hidden', true);
+    if(groupsTab != null)
+      {
+        groupsTab.removeAttribute('class');
+        tabLink = groupsTab.getElementsByTagName('a')[0];
+        tabLink.onclick = function() { hideProfile(); showGroups(); };
+      }
+  }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//   A C C O U N T : L I S T - B U I L D I N G
+
+function addGroupMember()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('addGroupMember()');
+
+    var tableBody = document.getElementById('newgroup_members_tbody');
+    var usernameField = document.getElementById('newgroup_membersearch');
+    var candidate = usernameField.value;						//  Not admitted until proven unique to list
+    var admittedMembers = [];									//  List of all members in group so far
+    var i;
+    var newString;												//  Has to be added all at once
+
+    if(candidate.length > 0)									//  Don't bother with an empty string
+      {
+        for(i = 0; i < tableBody.rows.length; i++)				//  Build list of admitted group members
+          {
+            if(admittedMembers.indexOf(tableBody.rows[i].cells[0].innerHTML) < 0)
+              admittedMembers.push(tableBody.rows[i].cells[0].innerHTML);
+          }
+
+        if(admittedMembers.indexOf(candidate) < 0)
+          {
+            newString  = '<tr>';
+            newString += '<td>' + candidate + '</td>';
+            newString += '<td>';
+            newString += '<a href="javascript:;" onclick="removeGroupMember(' + (admittedMembers.length) + ');">';
+            newString += '<img src="./img/minus.png" alt="Remove from group"/>';
+            newString += '</a></td>';
+            newString += '</tr>';
+
+            tableBody.innerHTML += newString;
+          }
+
+        usernameField.value = '';								//  Blank the entry field
+      }
+  }
+
+function removeGroupMember(i)
+  {
+    if(DEBUG_VERBOSE)
+      console.log('removeGroupMember(' + i + ')');
+
+    var tableBody = document.getElementById('newgroup_members_tbody');
+    var admittedMembers = [];									//  List of all members in group so far
+    var j;
+    var newString = '';											//  To replace whole <tbody>
+
+    for(j = 0; j < tableBody.rows.length; j++)					//  Build list of admitted group members
+      {
+        if(admittedMembers.indexOf(tableBody.rows[j].cells[0].innerHTML) < 0)
+          admittedMembers.push(tableBody.rows[j].cells[0].innerHTML);
+      }
+
+    admittedMembers.splice(i, 1);								//  Remove the i-th element
+
+    for(j = 0; j < admittedMembers.length; j++)					//  Rebuild table from edited list
+      {
+        newString += '<tr>';
+        newString += '<td>' + admittedMembers[j] + '</td>';
+        newString += '<td>';
+        newString += '<a href="javascript:;" onclick="removeGroupMember(' + j + ');">';
+        newString += '<img src="./img/minus.png" alt="Remove from group"/>';
+        newString += '</a></td>';
+        newString += '</tr>';
+      }
+
+    tableBody.innerHTML = newString;							//  Replace whole table
+  }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//   A C C O U N T : T O G G L E S
+
+//  Make the profile editing panel visible
+function showActive()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('showActive()');
+
+    var active = document.getElementById('active');
+    var activeTab = document.getElementById('active_tab');
+    var tabLink;
+    if(active != null)
+      active.removeAttribute('hidden');
+    if(activeTab != null)
+      {
+        activeTab.className = 'active';
+        tabLink = activeTab.getElementsByTagName('a')[0];
+        tabLink.onclick = function() {};
+      }
+  }
+
+//  Hide the profile editing panel
+function hideActive()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('hideActive()');
+
+    var active = document.getElementById('active');
+    var activeTab = document.getElementById('active_tab');
+    var tabLink;
+    if(active != null)
+      active.setAttribute('hidden', true);
+    if(activeTab != null)
+      {
+        activeTab.removeAttribute('class');
+        tabLink = activeTab.getElementsByTagName('a')[0];
+        tabLink.onclick = function() { hideArchivedChat(); showActive(); };
+      }
+  }
+
+//  Make the groups editing panel visible
+function showArchivedChat()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('showArchivedChat()');
+
+    var archived = document.getElementById('archived');
+    var archivedTab = document.getElementById('archivedchat_tab');
+    var tabLink;
+    if(archived != null)
+      archived.removeAttribute('hidden');
+    if(archivedTab != null)
+      {
+        archivedTab.className = 'active';
+        tabLink = archivedTab.getElementsByTagName('a')[0];
+        tabLink.onclick = function() {};
+      }
+  }
+
+//  Hide the groups editing panel
+function hideArchivedChat()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('hideArchivedChat()');
+
+    var archived = document.getElementById('archived');
+    var archivedTab = document.getElementById('archivedchat_tab');
+    var tabLink;
+    if(archived != null)
+      archived.setAttribute('hidden', true);
+    if(archivedTab != null)
+      {
+        archivedTab.removeAttribute('class');
+        tabLink = archivedTab.getElementsByTagName('a')[0];
+        tabLink.onclick = function() { hideActive(); showArchivedChat(); };
+      }
+  }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//   C H A T : A D D / R E M O V E   M E M B E R / G R O U P
+
+//  Open the invitation modal
+function popInvitePanel()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('popInvitePanel()');
+
+    $('#invitechat-modal').modal('toggle');					//  Display modal
+  }
+
+//  Add a SINGLE MEMBER to the Chat Session invitiation list
+function addChatInviteMember()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('addChatInviteMember()');
+
+    var tableBody = document.getElementById('chatinvite_tbody');
+    var usernameField = document.getElementById('invitechat_membersearch');
+    var candidate = usernameField.value;						//  Not admitted until proven unique to list
+    var admittedMembers = [];									//  List of all members in group so far
+    var i;
+    var newString;												//  Has to be added all at once
+
+    if(candidate.length > 0)									//  Don't bother with an empty string
+      {
+        for(i = 0; i < tableBody.rows.length; i++)				//  Build list of admitted group members
+          {
+            if(admittedMembers.indexOf(tableBody.rows[i].cells[0].innerHTML) < 0)
+              admittedMembers.push(tableBody.rows[i].cells[0].innerHTML);
+          }
+
+        if(admittedMembers.indexOf(candidate) < 0)
+          {
+            newString  = '<tr>';
+            newString += '<td class="user-invitation">' + candidate + '</td>';
+            newString += '<td>';
+            newString += '<a href="javascript:;" onclick="removeChatInvite(' + (admittedMembers.length) + ');">';
+            newString += '<img src="./img/minus.png" alt="Remove from invitation"/>';
+            newString += '</a></td>';
+            newString += '</tr>';
+
+            tableBody.innerHTML += newString;
+          }
+
+        usernameField.value = '';								//  Blank the entry field
+      }
+  }
+
+//  Add a GROUP to the Chat Session invitiation list
+function addChatInviteGroup()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('addChatInviteGroup()');
+  }
+
+//  Remove a MEMBER OR GROUP from the Chat Session invitiation list
+function removeChatInvite(i)
+  {
+    if(DEBUG_VERBOSE)
+      console.log('removeChatInvite(' + i + ')');
+
+    var tableBody = document.getElementById('chatinvite_tbody');
+    var admittedMembers = [];									//  List of all members in group so far
+    var j;
+    var newString = '';											//  To replace whole <tbody>
+
+    for(j = 0; j < tableBody.rows.length; j++)					//  Build list of admitted group members
+      {
+        if(admittedMembers.indexOf(tableBody.rows[j].cells[0].innerHTML) < 0)
+          admittedMembers.push(tableBody.rows[j].cells[0].innerHTML);
+      }
+
+    admittedMembers.splice(i, 1);								//  Remove the i-th element
+
+    for(j = 0; j < admittedMembers.length; j++)					//  Rebuild table from edited list
+      {
+        newString += '<tr>';
+        newString += '<td>' + admittedMembers[j] + '</td>';
+        newString += '<td>';
+        newString += '<a href="javascript:;" onclick="removeChatInvite(' + j + ');">';
+        newString += '<img src="./img/minus.png" alt="Remove from invitation"/>';
+        newString += '</a></td>';
+        newString += '</tr>';
+      }
+
+    tableBody.innerHTML = newString;							//  Replace whole table
+  }
+
+//  Open the invitation modal
+function popExpelPanel()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('popExpelPanel()');
+
+    $('#expelchat-modal').modal('toggle');					//  Display modal
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -184,4 +515,8 @@ function setupDeleteMail()
 //  Remove the values appropriate to one call so that they don't appear in subsequent calls
 function clearDeleteMailWindow()
   {
+    var delmailHeader = document.getElementById('delmail_header');
+    var delmailLabel = document.getElementById('delmail_label');
+    delmailHeader.innerHTML= '';
+    delmailLabel.innerHTML = '';
   }

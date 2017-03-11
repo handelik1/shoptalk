@@ -2,7 +2,7 @@
 
  session_start();													#  Create file to hold session identifier
  $current_time = time();											#  Save current time
- srand($time);														#  Seed randomizer
+ srand($current_time);												#  Seed randomizer
 
  function get_session_serial()										#  Generate a session uuid
   {
@@ -27,8 +27,17 @@
      $docstr .=     '<meta charset="UTF-8"/>';
      $docstr .=     '<meta name="keywords" content="interactive,tutor,student,technical,illustration,chat,forum"/>';
      $docstr .=     '<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />';
-    																#  Include script for all out AJAX calls
-     $docstr .=     '<script type="text/javascript" src="ajax.js"></script>';
+     ################################################################  Include scripts for all our AJAX calls:
+    																#  Ajax functions for account log in/out,
+    																#  creation and modification
+     $docstr .=     '<script type="text/javascript" src="obj/ajax/account/ajax.js"></script>';
+    																#  Ajax functions for chat
+     $docstr .=     '<script type="text/javascript" src="obj/ajax/chat/ajax.js"></script>';
+    																#  Ajax functions for messaging system
+     $docstr .=     '<script type="text/javascript" src="obj/ajax/mail/ajax.js"></script>';
+    																#  Ajax functions for bulletin board
+     $docstr .=     '<script type="text/javascript" src="obj/ajax/post/ajax.js"></script>';
+
      $docstr .=     '<script type="text/javascript" src="GUI.js"></script>';
      $docstr .=     '<script type="text/javascript" src="main.js"></script>';
      $docstr .=   '</head>';
@@ -57,11 +66,19 @@
      $docstr .=     '<meta charset="UTF-8"/>';
      $docstr .=     '<meta name="keywords" content="interactive,tutor,student,technical,illustration,chat,forum"/>';
      $docstr .=     '<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />';
-    																#  Include script for all out AJAX calls
-     $docstr .=     '<script type="text/javascript" src="ajax.js"></script>';
+     ################################################################  Include scripts for all our AJAX calls:
+    																#  Ajax functions for account log in/out,
+    																#  creation and modification
+     $docstr .=     '<script type="text/javascript" src="obj/ajax/account/ajax.js"></script>';
+    																#  Ajax functions for chat
+     $docstr .=     '<script type="text/javascript" src="obj/ajax/chat/ajax.js"></script>';
+    																#  Ajax functions for messaging system
+     $docstr .=     '<script type="text/javascript" src="obj/ajax/mail/ajax.js"></script>';
+    																#  Ajax functions for bulletin board
+     $docstr .=     '<script type="text/javascript" src="obj/ajax/post/ajax.js"></script>';
      $docstr .=   '</head>';
      																#  Body
-     $docstr .=   '<body style="background-color: black" onload="begin()">';
+     $docstr .=   '<body style="background-color: #000000" onload="begin()">';
      																#  Nav
      $docstr .=     '<nav class="navbar navbar-default main-nav" role="navigation">';
      $docstr .=       '<div class="container">';
