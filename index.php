@@ -120,7 +120,7 @@
      $docstr .=           '<label class="credential-label">User Name</label>';
      $docstr .=           '<input class="reg-credential" id="reqacc_uname" type="text">';
      $docstr .=           '<label class="credential-label">Password</label>';
-     $docstr .=           '<input class="reg-credential passpop" id="reqacc_pword" name="password" type="password" data-container="body" data-toggle="popover" data-placement="top" data-content="Password must be at least 8 characters long, contain at least one letter and at least 1 number.">';
+     $docstr .=           '<input class="reg-credential passpop" id="reqacc_pword" name="password" type="password" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Password must be at least 8 characters long, contain at least one letter and at least 1 number.">';
      $docstr .=           '<label class="credential-label">Confirm Password</label>';
      $docstr .=           '<input class="reg-credential" id="reqacc_confirmpword" type="password">';
      $docstr .=           '<label class="reg-credential" style="color: #FF0000; max-width: 65%;" id="reqacc_notice"></label>';

@@ -3,6 +3,18 @@
  This is the script for various interface initializations and updates.
 *****************************************************************************************/
 
+const MARKER_BLACK = "#000000";
+const MARKER_GREEN = "#008150";
+const MARKER_RED = "#FA2D27";
+const MARKER_BLUE = "#2F5DA6";
+const MARKER_ORANGE = "#FD8A03";
+const MARKER_PURPLE = "#C83771";
+
+var penDown = false;											//  Whether user is drawing
+var drawingInstructionBuffer = [];								//  Cache drawing instructions to post
+var context = null;
+var markerColor = MARKER_RED;
+
 //  Attach event handlers to carousel and password tooltip popup
 function begin()
   {
@@ -46,6 +58,130 @@ function layoutMode(m)
                  break;
       }
 */
+  }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//   D R A W I N G
+
+function enableDrawing()
+  {
+    var Canvas = document.getElementById('canvas');
+    if(Canvas != null)
+      {
+        context = Canvas.getContext("2d");
+
+        Canvas.addEventListener('mousedown', startDraw, false);
+        Canvas.addEventListener('touchstart', startDraw, false);
+
+        Canvas.addEventListener('mousemove', moveDraw, false);
+        Canvas.addEventListener('touchmove', moveDraw, false);
+
+        Canvas.addEventListener('mouseup', stopDraw, false);
+        Canvas.addEventListener('touchend', stopDraw, false);
+
+        Canvas.addEventListener('mouseleave', stopDraw, false);
+      }
+  }
+
+function disableDrawing()
+  {
+    var Canvas = document.getElementById('canvas');
+    if(Canvas != null)
+      {
+        Canvas.removeEventListener('mousedown', startDraw);
+        Canvas.removeEventListener('touchstart', startDraw);
+
+        Canvas.removeEventListener('mousemove', moveDraw, false);
+        Canvas.removeEventListener('touchmove', moveDraw, false);
+
+        Canvas.removeEventListener('mouseup', stopDraw, false);
+        Canvas.removeEventListener('touchend', stopDraw, false);
+
+        Canvas.removeEventListener('mouseleave', stopDraw, false);
+
+        context = null;
+      }
+  }
+
+function startDraw(e)
+  {
+    if(!penDown)
+      {
+        if(DEBUG_VERBOSE)
+          console.log('startDraw()');
+
+        penDown = true;
+        var nav = $('.sidebar-nav')[0];
+        var c = document.getElementById('canvas');
+        while(drawingInstructionBuffer.length > 0)				//  Empty the array
+          drawingInstructionBuffer.pop();
+
+        drawingInstructionBuffer.push( [ e.pageX * 0.5, e.pageY * 0.5 ] );
+      }
+  }
+
+function moveDraw(e)
+  {
+    if(penDown)
+      {
+        if(DEBUG_VERBOSE)
+          console.log('moveDraw()');
+
+        var nav = $('.sidebar-nav')[0];
+        var c = document.getElementById('canvas');
+        drawingInstructionBuffer.push( [ e.pageX * 0.5, e.pageY * 0.5 ] );
+        canvasDraw();
+      }
+  }
+
+//  Transmit drawing data you've generated on the session whiteboard
+function stopDraw(e)
+  {
+    if(penDown)
+      {
+        if(DEBUG_VERBOSE)
+          console.log('stopDraw()');
+
+        penDown = false;
+        if(drawingInstructionBuffer.length > 1)
+          draw();												//  Post the drawing event to DB
+      }
+  }
+
+//  Render the mouse/touch data to the WebGL context
+function canvasDraw()
+  {
+    var i;
+
+    if(context != null)
+      {
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+        context.strokeStyle = markerColor;
+        context.lineJoin = "round";
+        context.lineWidth = 5;
+
+        for(i = 1; i < drawingInstructionBuffer.length; i++)
+          {
+            context.beginPath();
+            context.moveTo( drawingInstructionBuffer[i - 1][0],
+                            drawingInstructionBuffer[i - 1][1] );
+            context.lineTo( drawingInstructionBuffer[i][0],
+                            drawingInstructionBuffer[i][1] );
+            context.closePath();
+            context.stroke();
+          }
+      }
+    else
+      console.log('CONTEXT IS NULL');
+  }
+
+//  Transmit clear drawing signal
+function clearDrawingBoard()
+  {
+    if(context != null)
+      {
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+      }
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -375,6 +511,79 @@ function popExpelPanel()
       console.log('popExpelPanel()');
 
     $('#expelchat-modal').modal('toggle');					//  Display modal
+  }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//   P O S T : A D D / R E M O V E   M E M B E R / G R O U P
+
+//  Add the member or group identified in the text field to the post access grantees' list
+function addShare()
+  {
+    if(DEBUG_VERBOSE)
+      console.log('addShare()');
+
+    var tableBody = document.getElementById('newshare_members_tbody');
+    var usernameField = document.getElementById('newshare_membersearch');
+    var candidate = usernameField.value;						//  Not admitted until proven unique to list
+    var admittedMembers = [];									//  List of all members in group so far
+    var i;
+    var newString;												//  Has to be added all at once
+
+    if(candidate.length > 0)									//  Don't bother with an empty string
+      {
+        for(i = 0; i < tableBody.rows.length; i++)				//  Build list of admitted group members
+          {
+            if(admittedMembers.indexOf(tableBody.rows[i].cells[0].innerHTML) < 0)
+              admittedMembers.push(tableBody.rows[i].cells[0].innerHTML);
+          }
+
+        if(admittedMembers.indexOf(candidate) < 0)
+          {
+            newString  = '<tr>';
+            newString += '<td>' + candidate + '</td>';
+            newString += '<td>';
+            newString += '<a href="javascript:;" onclick="removeShareMember(' + (admittedMembers.length) + ');">';
+            newString += '<img src="./img/minus.png" alt="Remove access"/>';
+            newString += '</a></td>';
+            newString += '</tr>';
+
+            tableBody.innerHTML += newString;
+          }
+
+        usernameField.value = '';								//  Blank the entry field
+      }
+  }
+
+function removeShareMember(i)
+  {
+    if(DEBUG_VERBOSE)
+      console.log('removeShareMember(' + i + ')');
+
+    var tableBody = document.getElementById('newshare_members_tbody');
+    var admittedMembers = [];									//  List of all members in group so far
+    var j;
+    var newString = '';											//  To replace whole <tbody>
+
+    for(j = 0; j < tableBody.rows.length; j++)					//  Build list of admitted group members
+      {
+        if(admittedMembers.indexOf(tableBody.rows[j].cells[0].innerHTML) < 0)
+          admittedMembers.push(tableBody.rows[j].cells[0].innerHTML);
+      }
+
+    admittedMembers.splice(i, 1);								//  Remove the i-th element
+
+    for(j = 0; j < admittedMembers.length; j++)					//  Rebuild table from edited list
+      {
+        newString += '<tr>';
+        newString += '<td>' + admittedMembers[j] + '</td>';
+        newString += '<td>';
+        newString += '<a href="javascript:;" onclick="removeShareMember(' + j + ');">';
+        newString += '<img src="./img/minus.png" alt="Remove access"/>';
+        newString += '</a></td>';
+        newString += '</tr>';
+      }
+
+    tableBody.innerHTML = newString;							//  Replace whole table
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
