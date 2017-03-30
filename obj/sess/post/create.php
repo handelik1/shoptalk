@@ -1,9 +1,12 @@
 <?php
 
  /*************************************************************************************
-  This is the homepage retrieval routine. A request has been made to display a registered
-  user's homepage. We check the given credentials against existing records and either
-  setup the page or return an error message.
+  This is the post creation routine. A registered user has submitted data to contain in
+  a bulletin. This may include a title, a body of text, drawing instructions, keywords,
+  and user names with whom the post is to be shared.
+
+  We check the given credentials against existing records, and if the request is valid
+  then a new record is inserted into the posts table. If not, return an error message.
 
   We check the following things for every login request:
 
@@ -15,8 +18,8 @@
 
  require_once('../dbutils.php');								#  Contains DB helper functions
  require_once('../../interface/nav.php');
- require_once('../../interface/account/account.php');
- require_once('../../interface/account/accounttoolbar.php');
+ require_once('../../interface/post/postdirectory.php');
+ require_once('../../interface/post/posttoolbar.php');
 
  $send_request = preg_replace("/[^A-Za-z]/", '', $_POST['sendRequest']);
 
@@ -37,9 +40,9 @@
      $pword = preg_replace("~[^0-9A-Za-z\.\s\&\;\#\/\-\_\,\:\?\!]~", '', htmlentities($_SESSION['pword'], ENT_QUOTES));
    }
 
- debug_log_inputs('account-editacc', $_POST);
+ debug_log_inputs('post-create', $_POST);
 
- if(strcmp($send_request, 'HSaCWDTKDTKTLFOut') == 0)			#  Run only if request came from JS
+ if(strcmp($send_request, 'yerTellinMEsonnyboy') == 0)			#  Run only if request came from JS
    {
      connect_to_db($link);										#  Connect to MySQL
 
@@ -60,7 +63,7 @@
      $ret = mysql_fetch_array($result, MYSQL_ASSOC);
      $salt = $ret['salt'];
 																#  Compare hashed pword
-     $query  = 'SELECT kp, first_name, last_name, uname, institution, time_zone FROM users';
+     $query  = 'SELECT kp, first_name, time_zone FROM users';
      $query .= ' WHERE uname = "'.$uname.'" AND pword = "'.(hash('sha256', $pword)).$salt.'";';
      $result = mysql_query($query, $link);
      if($result == false)
@@ -77,9 +80,6 @@
      $ret = mysql_fetch_array($result, MYSQL_ASSOC);
      $kp = $ret['kp'];
      $fname = $ret['first_name'];
-     $lname = $ret['last_name'];
-     $sys_uname = $ret['uname'];
-     $institution = $ret['institution'];
      $time_zone = intval($ret['time_zone']);
 																#  Update user's time stamp
      $query  = 'UPDATE users SET last_access = '.$current_time;
@@ -91,26 +91,25 @@
          croak('dbupdate');
        }
 
+     /*********************************************************************************************/
+     /*
+     $query  = '';
+
      $shoptalk_nav = new Nav();
-     $shoptalk_account = new Account();
-     $shoptalk_account->fname = $fname;							#  Set this user's first name
-     $shoptalk_account->lname = $lname;							#  Set this user's last name
-     $shoptalk_account->uname = $sys_uname;						#  Set this user's screen name
-     $shoptalk_account->institution = $institution;				#  Set this user's institution
-     $shoptalk_account->time_zone = $time_zone;					#  Set this user's time zone
-     $shoptalk_account->query_groups($kp, $link);				#  Get this user's groups
-     $shoptalk_accounttoolbar = new AccountToolbar();
+     $shoptalk_postdir = new PostDirectory();
+     $shoptalk_posttoolbar = new PostToolbar();
 
      $outputstring  = 'ok|';									#  Build the output string
      $outputstring .= '<div id="homepage">';
      $outputstring .=   '<div class="container-fluid">';
      $outputstring .=     '<div class="row">';
      $outputstring .=       $shoptalk_nav->draw();				#  Render the Nav
-     $outputstring .=       $shoptalk_account->draw($kp, $link);#  Render the Account panels
-     $outputstring .=       $shoptalk_accounttoolbar->draw();	#  Render the Account Toolbar
+     $outputstring .=       $shoptalk_postdir->draw($kp, $link);#  Render the Post Directory
+     $outputstring .=       $shoptalk_posttoolbar->draw();		#  Render the Post Toolbar
      $outputstring .=     '</div>';
      $outputstring .=   '</div>';
      $outputstring .= '</div>';
+     */
 
      mysql_close($link);										#  Close the link to DB
    }
@@ -119,7 +118,7 @@
 
  $_SESSION['last_access'] = $current_time;						#  Set its last access time
 
- debug_log_outputs('account-editacc', $outputstring);
+ debug_log_outputs('post-create', $outputstring);
 
  print $outputstring;
 

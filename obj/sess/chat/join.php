@@ -45,6 +45,8 @@
      $pword = preg_replace("~[^0-9A-Za-z\.\s\&\;\#\/\-\_\,\:\?\!]~", '', htmlentities($_SESSION['pword'], ENT_QUOTES));
    }
 
+ debug_log_inputs('chat-join', $_POST);
+
  if(strcmp($send_request, 'LEMMEIN') == 0)						#  Run only if request came from JS
    {
      connect_to_db($link);										#  Connect to MySQL
@@ -134,6 +136,8 @@
    croak('baddata');
 
  $_SESSION['last_access'] = $current_time;						#  Set its last access time
+
+ debug_log_outputs('chat-join', $outputstring);
 
  print $outputstring;
 

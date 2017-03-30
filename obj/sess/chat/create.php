@@ -41,6 +41,8 @@
      $pword = preg_replace("~[^0-9A-Za-z\.\s\&\;\#\/\-\_\,\:\?\!]~", '', htmlentities($_SESSION['pword'], ENT_QUOTES));
    }
 
+ debug_log_inputs('chat-create', $_POST);
+
  if(strcmp($send_request, 'settumUPsettumMUP') == 0)			#  Run only if request came from JS
    {
      /*********************************************************************************************/
@@ -211,6 +213,8 @@
    croak('baddata');
 
  $_SESSION['last_access'] = $current_time;						#  Set its last access time
+
+ debug_log_outputs('chat-create', $outputstring);
 
  print $outputstring;
 

@@ -55,7 +55,7 @@
          $str .=           '<div class="col-sm-12">';
          										#  The Canvas
          $str .=             '<div id="blackboard" class="drawing-area">';
-         $str .=               '<canvas id="chatcanvas"></canvas>';
+         $str .=               '<canvas id="canvas"></canvas>';
          $str .=             '</div>';
          										#  The Transcript
          $str .=             '<div id="chat_transcript" class="chat-area">';
@@ -106,7 +106,7 @@
          $str .=           '<div class="col-sm-12">';
          										#  The Canvas
          $str .=             '<div id="blackboard" class="drawing-area">';
-         $str .=               '<canvas id="chatcanvas"></canvas>';
+         $str .=               '<canvas id="canvas"></canvas>';
          $str .=             '</div>';
          										#  The Transcript
          $str .=             '<div class = "chat-transcript-header-row"></div>';
@@ -178,7 +178,7 @@
          $str .=              '<tr>';
          $str .=                '<th></th>';		#  Column for "remove" buttons
          $str .=              '</tr>';
-         $str .=            '</thead>';  
+         $str .=            '</thead>';
          $str .=              '<tbody id="chatinvite_tbody">';
          $str .=              '</tbody>';
          $str .=         '</table>';

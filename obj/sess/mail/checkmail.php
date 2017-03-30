@@ -39,6 +39,8 @@
  																#  inbox (true) or outbox (false)
  $ibox = (intval(preg_replace("~[^0-1]~", '', $_POST['b'])) == 1);
 
+ debug_log_inputs('mail-checkmail', $_POST);
+
  if(strcmp($send_request, 'DeathTaxzNmAIL') == 0)				#  Run only if request came from JS
    {
      connect_to_db($link);										#  Connect to MySQL
@@ -108,6 +110,8 @@
    croak('baddata');
 
  $_SESSION['last_access'] = $current_time;						#  Set its last access time
+
+ debug_log_outputs('mail-checkmail', $outputstring);
 
  print $outputstring;
 

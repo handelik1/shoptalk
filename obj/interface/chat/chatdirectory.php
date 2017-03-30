@@ -68,6 +68,10 @@
          return $str;
        }
 
+     /*********************************************************************************************
+          Modal
+      *********************************************************************************************/
+
      //  Build the chat-creation modal
      public function create_chat_modal()
        {
@@ -75,11 +79,13 @@
          $str .=   '<div class="credential-panel" id="newchat-panel">';
          $str .=     '<div class="credential-form" id="newchat-form">';
          $str .=       '<h2 class="sign-in font-24 modal-header mail_subject">New Chat Session</h2>';
-         $str .=       '<table class = "table chat-table">';
+
+         $str .=       '<table id="chatcreate_table" class="table chat-table">';
          $str .=       '<tr><td class = "quick-set-title"><label class="credential-label" style="margin-top: 0px">Session Title:</label></td>';
          $str .=       '<td><input class="newchat-credential" id="newchat_title" type="text"></td></tr>';
          $str .=       '<br/>';
 
+         //  Page-replacable content starts here, below the first row of chatcreate_table
          $str .=       '<tr><td class = "quick-set"><label class="credential-label">Quick Set-up: </label>';
          $str .=       '<a href="./docs/session_policy.html#leader" target="_blank" class = "help-button">[?]</a></td>';
          $str .=       '<td><input type="submit" class="btn-default register-button chat-button"';
@@ -101,6 +107,51 @@
          $str .=     '</div>';
          $str .=   '</div>';
          $str .= '</div>';
+         return $str;
+       }
+
+     //  The page function swaps out contents for the Chat Creation modal window.
+     //  Everything BELOW THE FIRST <TR> in chatcreate_table is subject to swap-outs
+     public function page($i)
+       {
+         switch($i)
+           {
+             case 1:  $str  = '<tr><td><label class="credential-label">Members or Groups: </label></td>';
+                      $str .=     '<td></td></tr>';
+
+                      $str  = '<tr><td><label class="credential-label">Members or Groups: </label></td>';
+                      $str .=     '<td>';
+                      $str .=       '<table>';
+                      $str .=         '<tr>';
+                      $str .=           '<td><input class="newgroup-credential" id="newgroup_membersearch"';
+                      $str .=                ' onkeyup="queryUsers(this.value);" type="text"/>';
+                      $str .=           '</td>';
+                      $str .=           '<td>';
+                      $str .=           '</td>';
+                      $str .=         '</tr>';
+                      $str .=       '</table>';
+                      $str .=     '</td></tr>';
+
+                      $str .= '<tr><td><input type="submit" class="btn-default register-button chat-button"';
+                      $str .=     ' id="newchat_pageback" value="Back" onclick="chatSetupPage(0);"></td>';
+                      $str .=     '<td><input type="submit" class="btn-default register-button chat-button"';
+                      $str .=         ' id="newchat_pagenext" value="Next" onclick="chatSetupPage(2);"></td></tr>';
+
+                      break;
+             default: $str  = '<tr><td class="quick-set"><label class="credential-label">Quick Set-up: </label>';
+                      $str .= '<a href="./docs/session_policy.html#leader" target="_blank" class = "help-button">[?]</a></td>';
+                      $str .= '<td><input type="submit" class="btn-default register-button chat-button"';
+                      $str .=   ' id="newchat_qset_leader" value="Session Leader" onclick="quickSet_leader();"></td></tr>';
+
+                      $str .= '<tr><td class = "quick-set"><label class="credential-label">Quick Set-up: </label>';
+                      $str .= '<a href="./docs/session_policy.html#equals" target="_blank" class = "help-button">[?]</a></td>';
+                      $str .= '<td><input type="submit" class="btn-default register-button chat-button"';
+                      $str .=   ' id="newchat_qset_equal" value="Equal Standing" onclick="quickSet_democratic();"></td></tr>';
+
+                      $str .= '<tr><td><label class="credential-label">Custom Settings: </label></td>';
+                      $str .= '<td><input type="submit" class="btn-default register-button chat-button"';
+                      $str .=   ' id="newchat_create" value="Next" onclick="chatSetupPage(1);"></td></tr>';
+           }
          return $str;
        }
 

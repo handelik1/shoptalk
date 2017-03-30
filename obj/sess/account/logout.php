@@ -29,6 +29,8 @@
      $pword = preg_replace("~[^0-9A-Za-z\.\s\&\;\#\/\-\_\,\:\?\!]~", '', htmlentities($_SESSION['pword'], ENT_QUOTES));
    }
 
+ debug_log_inputs('account-logout', $_POST);
+
  if(strcmp($send_request, 'leightRLZRZ') == 0)					#  Run only if request came from JS
    {
      connect_to_db($link);										#  Connect to MySQL
@@ -83,6 +85,8 @@
    }
  else
    croak('baddata');
+
+ debug_log_outputs('account-logout', $outputstring);
 
  header('Location: ../../../index.php');	##### *******  FORCE REFRESH ON LOGOUT??!?!?!?!?
  die();

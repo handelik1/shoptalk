@@ -123,29 +123,31 @@
          $str  = '<div class="modal fade" id="newgroup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
          $str .=   '<div class="credential-panel" id="newgroup-panel">';
          $str .=     '<div class="credential-form" id="newgroup-form">';
-         $str .=       '<h2 class="sign-in font-24">Define New Group</h2>';
-         $str .=       '<hr style="margin-top: 0px"></hr>';
-
-         $str .=       '<label class="credential-label" style="margin-top: 0px">Group Label: </label>';
-         $str .=       '<input class="newgroup-credential" id="newgroup_title" type="text"/>';
-         $str .=       '<br/>';
-         $str .=       '<label class="credential-label" style="margin-top: 0px">Member: </label>';
-         $str .=       '<input class="newgroup-credential" id="newgroup_membersearch"';
-         $str .=             ' onkeyup="queryUsers(this.value);" type="text"/>';
-         $str .=       '<a href="javascript:;" onclick="addGroupMember();">';
+         $str .=       '<h2 class="sign-in font-24 modal-header group_subject">Define New Group</h2>';
+         $str .=       '<table class = "table group-invite-table">';
+         $str .=       '<tr><td class = "group-invite-label"><label class="credential-label" style="margin-top: 0px">Group Label: </label></td>';
+         $str .=       '<td class = "group-invite-text"><input class="newgroup-credential" id="newgroup_title" type="text"></td></tr>';
+         $str .=       '<tr><td class = "group-invite-label"><label class="credential-label" style="margin-top: 0px">Member: </label></td>';
+         $str .=       '<td class = "group-invite-text"><input class="newgroup-credential" id="newgroup_membersearch"';
+         $str .=             ' onkeyup="queryUsers(this.value);" type="text"/></td>';
+         $str .=       '<td><a href="javascript:;" onclick="addGroupMember();">';
          $str .=         '<img src="./img/plus.png" alt="Add to group"/>';
-         $str .=       '</a>';
+         $str .=       '</a></td></tr>';
+         $str .=      '</br>';
+         $str .=       '</table>';
          $str .=       '<div id="newgroup_tagfield">';
+         $str .=        '<h4 id = "member-name">Member Name</h4>';
+         $str .=         '<div class = "chat-wrapper">';
          $str .=         '<table id="newgroup_members" class="table table-striped">';
          $str .=           '<thead>';
          $str .=             '<tr>';
-         $str .=               '<th>Member name</th>';
          $str .=               '<th></th>';		#  Column for "remove" buttons
          $str .=             '</tr>';
          $str .=           '</thead>';
          $str .=           '<tbody id="newgroup_members_tbody">';
          $str .=           '</tbody>';
          $str .=         '</table>';
+         $str .=        '</div>';
          $str .=       '</div>';
 
          $str .=       '<input type="submit" class="btn-default register-button" id="newgroup_save"';

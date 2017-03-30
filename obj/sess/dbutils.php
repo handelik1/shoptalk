@@ -6,10 +6,12 @@
 
  $current_time = time();
 
+ $SESS_DEBUGGING = true;
+
  #  Connect to database for "ShopTalk" in a way that was serviceable for years, never bothering anybody.
  function connect_to_db(&$link)
    {
-     $link = mysql_connect('localhost', 'KevinHandeli', '123shoptalk!');
+     $link = mysql_connect('tgamato.net', 'shoptalk', '123shoptalk!');
      if($link == false)
        croak('dbconnect');
      if(mysql_select_db('shoptalk', $link) == false)
@@ -63,6 +65,39 @@
          default:           $str .= $err;
        }
      die($str);
+   }
+
+ function debug_log_inputs($script, &$args)
+   {
+     global $SESS_DEBUGGING, $current_time;
+     if($SESS_DEBUGGING)
+       {
+         $arr = array();
+         foreach($args as $k => $v)
+           $arr[$k] = $v;
+
+         if(!array_key_exists('uname', $arr))
+           $arr['uname'] = $_SESSION['uname'];
+
+         if(!array_key_exists('pword', $arr))
+           $arr['pword'] = $_SESSION['pword'];
+
+         $fh = fopen('../../debug/'.$script.'.'.$current_time.'.in', 'w');
+         foreach($arr as $k => $v)
+           fwrite($fh, ''.$k."\t".$v."\n");
+         fclose($fh);
+       }
+   }
+
+ function debug_log_outputs($script, $output)
+   {
+     global $SESS_DEBUGGING, $current_time;
+     if($SESS_DEBUGGING)
+       {
+         $fh = fopen('../../debug/'.$script.'.'.$current_time.'.out', 'w');
+         fwrite($fh, ''.$output."\n");
+         fclose($fh);
+       }
    }
 
  ?>

@@ -231,6 +231,7 @@ function stageHome()
                     document.body.innerHTML = ret[1];		//  Rewrite page asynchronously
 
                     currentStation = SHOPTALK_MAILBOX;		//  Set section tracker
+                    disableDrawing();
                   }
                 else										//  Anything other than what we expect
                   {
@@ -274,6 +275,7 @@ function stageAccount()
 															//  Cut past header-pipe
                     document.body.innerHTML = RecXML.responseText.substring(3, RecXML.responseText.length);
                     currentStation = SHOPTALK_ACCOUNT;		//  Set section tracker
+                    disableDrawing();
                   }
                 else										//  Anything other than what we expect
                   {
@@ -403,6 +405,7 @@ function queryUsers(qstring)
         params += '&uname=' + uname;						//  Build parameter string
         params += '&pword=' + pword;
         params += '&q=' + qstring;							//  Attach query string
+        params += '&ig=0';									//  Only search among registered users
 
         RecXML.open("POST", 'obj/sess/account/qusergroup.php', true);
         RecXML.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

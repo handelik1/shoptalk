@@ -23,11 +23,11 @@
          $str .=           '<span class="icon-bar"></span>';
          $str .=           '<span class="icon-bar"></span>';
          $str .=         '</button>';
-         $str .=         '<span class="visible-xs navbar-brand" onclick="stageHome();">ShopTalk</span>';
+         $str .=         '<span class="visible-xs navbar-brand mobile-brand" onclick="stageHome();"><img src = "./img/logo.png" height="40" width="150"></span>';
          $str .=       '</div>';
          $str .=       '<div class="navbar-collapse collapse sidebar-navbar-collapse">';
          $str .=         '<ul class="nav navbar-nav">';
-         $str .=           '<li id="nav_home_li" onclick="stageHome();"><a id="nav-home" class="brand font-26">ShopTalk</a></li>';
+         $str .=           '<li id="nav_home_li" onclick="stageHome();"><a id="nav-home" class="brand font-26"><img src = "./img/logo.png" height="50" width="175"></a></li>';
          $str .=           '<li id="nav_chat_li" onclick="stageChat();"><a id="nav-chat" class = "font-18">Chat</a></li>';
          $str .=           '<li id="nav_posts_li" onclick="stagePosts();"><a id="nav-post" class = "font-18">Bulletin</a></li>';
 /*

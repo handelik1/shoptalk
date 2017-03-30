@@ -41,6 +41,7 @@ function stageChat()
                   {
                     document.body.innerHTML = ret[1];		//  Rewrite page asynchronously
                     currentStation = SHOPTALK_CHAT;			//  Set section tracker
+                    disableDrawing();
                   }
                 else										//  Anything other than what we expect
                   {
@@ -162,9 +163,10 @@ function say()
       }
   }
 
-//  Transmit drawing data you've generated on the session whiteboard
 function draw()
   {
+    if(DEBUG_VERBOSE)
+      console.log('draw()');
   }
 
 //  Periodic in-session refresh function: keep requesting fresh transcripts
@@ -417,6 +419,7 @@ function joinChat(i)
                     										//  Rewrite page asynchronously (cut past 'ok|')
                     document.body.innerHTML = RecXML.responseText.substring(3, RecXML.responseText.length);
                     currentStation = SHOPTALK_IN_SESSION;
+                    enableDrawing();
                   }
                 else										//  Anything other than what we expect
                   {
@@ -427,7 +430,9 @@ function joinChat(i)
     RecXML.send(params);
   }
 
-//  Create a new session with "Democratic" settings and conditions
+//  Create a new session with "Democratic" settings and conditions: meaning that should the session's
+//  creatror ever wish to make this chat a public resource, he or she must get the permission of all
+//  who contributed.
 function quickSet_democratic()
   {
     if(DEBUG_VERBOSE)
@@ -448,7 +453,9 @@ function quickSet_democratic()
     createChat(params);
   }
 
-//  Create a new session with "Session Leader" settings and conditions
+//  Create a new session with "Session Leader" settings and conditions: meaning that should the
+//  session's creatror ever wish to make this post a public resource, he or she NEED NOT get the
+//  permission of all who contributed.
 function quickSet_leader()
   {
     if(DEBUG_VERBOSE)
@@ -474,6 +481,61 @@ function chatSetupPage(i)
   {
     if(DEBUG_VERBOSE)
       console.log('chatSetupPage(' + i + ')');
+
+    var RecXML = new XMLHttpRequest();						//  IE 7+, Firefox, Chrome, Opera, Safari
+    var params = 'sendRequest=heartheyregonnacancelLatin';	//  Gratuitous complication
+    params += '&uname=' + uname;							//  Build parameter string
+    params += '&pword=' + pword;
+    params += '&p=' + i;
+
+    RecXML.open("POST", 'obj/sess/chat/setuppage.php', true);
+    RecXML.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    RecXML.onreadystatechange = function()
+      {
+        if(RecXML.readyState == 4 && RecXML.status == 200)
+          {
+            if(RecXML.responseText == '')					//  Null string
+              {
+              }
+            else
+              {
+                var ret = RecXML.responseText.split('|');
+                if(ret[0] == 'error')						//  Error with explanation
+                  {
+                  }
+                else if(ret[0] == 'ok')
+                  {
+                    var prospectiveTitle = document.getElementById('newchat_title').value;
+                    var chatCreateTable = document.getElementById('chatcreate_table');
+                    if(chatCreateTable != null)
+                      {
+                        var i;
+                        var str;
+                      										//  Pull existing rows after session title
+                        while(chatCreateTable.rows.length > 1)
+                          chatCreateTable.deleteRow(chatCreateTable.rows.length - 1);
+
+                        str = chatCreateTable.innerHTML;	//  Save table text
+                        for(i = 1; i < ret.length; i++)		//  Insert replacement rows from incoming page
+                          {
+                            if(i < ret.length - 1)
+                              str += ret[i] + '<br/>';
+                            else
+                              str += ret[i];
+                          }
+                        chatCreateTable.innerHTML = str;	//  Rewrite page asynchronously
+
+                        if(prospectiveTitle.length > 0)		//  Restore string (if one existed)
+                          document.getElementById('newchat_title').value = prospectiveTitle;
+                      }
+                  }
+                else										//  Anything other than what we expect
+                  {
+                  }
+              }
+          }
+      };
+    RecXML.send(params);
   }
 
 //  Retrieves settings from input fields and packs them up as parameters for createChat() request
@@ -521,6 +583,7 @@ function createChat(params)
                     										//  Rewrite page asynchronously (cut past 'ok|')
                     document.body.innerHTML = RecXML.responseText.substring(3, RecXML.responseText.length);
                     currentStation = SHOPTALK_IN_SESSION;
+                    enableDrawing();
                   }
                 else										//  Anything other than what we expect
                   {

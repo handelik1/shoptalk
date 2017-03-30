@@ -106,7 +106,7 @@ input:invalid {
 .main-jumbo{
   position: relative;
   height: 84.5%;
-  background: linear-gradient( rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) ), url('../img/background.jpg') no-repeat center;
+  background: linear-gradient( rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) ), url('../img/background.png') no-repeat center;
   background-size: 100% 100%;
 }
 
@@ -171,7 +171,7 @@ width: 70%;
 }
 
 .credential-form{
-  background-color: #00b800;
+  background-color: #5b8fff;
   border-radius: 5px;
   margin-bottom: 0px !important;
   padding-bottom: 35px;
@@ -215,8 +215,10 @@ width: 70%;
   font-weight: bold;
   text-shadow: none;
 }
-.signin-button:hover{
-  background-color: #00a900;
+
+
+.signin-button:hover,.register-button:hover{
+  background-color: #4872cc;
   color: white;
   border-color: black;
 }
@@ -230,10 +232,19 @@ width: 70%;
 
 
 .navbar-style{
-  background: #00cc00;
+  background: #5b8fff;
   border-radius: 0px;
   border: none;
 }
+
+#nav-chat{
+  padding-top: 0px;
+}
+
+.mobile-brand{
+  margin-top:-7px;
+}
+
 .brand-color {
   color: white !important;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -285,6 +296,15 @@ width: 70%;
   padding-bottom: 45px !important;
 }
 
+#newgroup-form{
+  border-radius: 0px !important;
+  background-color: #e5e5e5;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  padding-bottom: 45px !important;
+}
+
+
 #delmail-form{
   border-radius: 0px !important;
   background-color: #e5e5e5;
@@ -311,7 +331,7 @@ width: 70%;
 .modal-header{
   border-top-left-radius: 5px !important;
   border-top-right-radius: 5px !important;
-  background-color: #00cc00;
+  background-color: #5b8fff;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
   border-bottom: 1px solid black;
@@ -324,6 +344,9 @@ width: 70%;
 .chat_subject{
   line-height: 23px !important;
 }
+.group_subject{
+  line-height: 23px !important;
+}
 
 #newmail-panel{
   margin-top: 5%;
@@ -332,7 +355,7 @@ width: 70%;
 #newgroup_tagfield{
   max-height: 160px;
   height: 88px;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 #homepage{
@@ -410,9 +433,8 @@ width: 70%;
   margin: auto;
   margin-top: -3%;
   border: 1px solid black;
-  border-radius: 5px;
   box-shadow: 5px 5px 5px #888888;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 #blackboard{
@@ -420,9 +442,13 @@ width: 70%;
   width:100%;
 }
 
-#chatcanvas{
-  width: 100%;
+#canvas{
+  width: 100.5%;
   height:95%;
+  background: url("../img/whiteboard.png") no-repeat;
+  background-size: 90% 90% ;
+  margin-top: 1%;
+  margin-left: 4.5%;
 }
 
 .chat-text{
@@ -434,13 +460,18 @@ width: 70%;
 }
 
 .chat-transcript-header-row{
+  position: relative;
+  top: -24px;
   margin-left: auto;
   margin-right: auto;
-  border-top-left-radius: 5px; 
+  border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right:1px solid black;;
   width: 90%;
   height: 25px;
-  background-image: linear-gradient(#00cc00 , #b2efb2);
+  background-image: linear-gradient(#5b8fff , #4872cc);
 }
 #transcript_table{
   margin-top: 15px;
@@ -474,7 +505,7 @@ width: 70%;
 
 .chat-wrapper{
   overflow-y: auto;
-  height: 50px; 
+  height: 50px;
 }
 
 .user-invitation{
@@ -558,6 +589,31 @@ width: 70%;
 .chat-button:hover{
   border: 1px solid black;
   background-color: #b7b7b7;
+}
+
+/*****Group*****/
+
+.group-invite-text{
+  width: 44%;
+  padding-right: 2px !important;
+  padding-left: 4px !important;
+}
+.group-invite-label{
+  width: 32%;
+  padding-right: 2px !important;
+  padding-left: 18px !important;
+}
+
+.group-invite-table tr td{
+  border-top: none !important;
+}
+
+.newgroup-credential{
+  width: 100%;
+}
+
+#newgroup_save{
+  margin-top: 8px;
 }
 
 /* make sidebar nav vertical */
@@ -689,7 +745,7 @@ width: 70%;
 
 }
 .credential-form{
-  background-color: #00b800;
+  background-color: #5b8fff;
   border-radius: 5px;
   margin-bottom: 0px !important;
   padding-bottom: 30px;
@@ -756,7 +812,7 @@ width: 70%;
    .sidebar-nav-right{
    width: 100%;
    position: fixed;
-   left: 0; 
+   left: 0;
    bottom: 0px;
    border-top: 1px solid black;
  }
@@ -792,7 +848,7 @@ width: 70%;
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 5px 5px 5px #888888;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 .chat-text{
   margin-top:1%;
@@ -936,8 +992,7 @@ width: 70%;
 /***Chat Session****/
 
 .chat-area{
-  margin-top: 7%;
-  height: 35%;
+  height: 40%;
   max-width: 100%;
   border: 1px solid black;
   border-radius: 5px;
@@ -949,22 +1004,25 @@ width: 70%;
   width:100%;
 }
 
-#chatcanvas{
+#canvas{
   width: 100%;
   height:100%;
+  background: url("../img/whiteboard.png") no-repeat;
+  background-size: 100% 100% ;
+  margin-top: 2%;
+  margin-left: 0px;
 }
 
 .chat-transcript-header-row{
   position: relative;
-  top: 46px;
+  top: 10px;
   margin-left: auto;
   margin-right: auto;
-  border-top: 1px solid black;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  width:99.5%;
+  width:100%;
   height: 25px;
-  background-image: linear-gradient(#00cc00 , #b2efb2);
+  background-image: linear-gradient(#5b8fff , #4872cc);
 }
 
 .chat-invite-label{
@@ -980,7 +1038,7 @@ width: 70%;
 }
 
 .chat-table tr td{
-  border: 
+  border:
 }
 
 .invitechat-credential{

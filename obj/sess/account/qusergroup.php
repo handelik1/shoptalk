@@ -36,6 +36,9 @@
    }
 
  $qstring = preg_replace("~[^0-9A-Za-z\.\s\&\;\#\/\-\_\,\:\?\!]~", '', htmlentities($_POST['q'], ENT_QUOTES));
+ $include_groups = (strcmp(preg_replace("~[^0-1]~", '', $_POST['ig']), '1') == 0);
+
+ debug_log_inputs('account-qusergroup', $_POST);
 
  if(strcmp($send_request, 'rEEchOUTtuchSumune') == 0)			#  Run only if request came from JS
    {
@@ -115,6 +118,8 @@
    croak('baddata');
 
  $_SESSION['last_access'] = $current_time;						#  Set its last access time
+
+ debug_log_outputs('account-qusergroup', $outputstring);
 
  print $outputstring;
 

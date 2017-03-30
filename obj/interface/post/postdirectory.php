@@ -56,6 +56,8 @@
          $str .=     '</div>';
          $str .=   '</div>';
          $str .= '</div>';
+												#  Build these modals so that they can exist
+         $str .= $this->create_post_modal();	#  when needed
 
          return $str;
        }
@@ -261,6 +263,43 @@
 
              $str .= '</tr>';
            }
+         return $str;
+       }
+
+     //  Build the post-creation modal
+     public function create_post_modal()
+       {
+         $str  = '<div class="modal fade" id="newpost-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
+         $str .=   '<div class="credential-panel" id="newpost-panel">';
+         $str .=     '<div class="credential-form" id="newpost-form">';
+         $str .=       '<h2 class="sign-in font-24 modal-header mail_subject">Post New Bulletin</h2>';
+         $str .=       '<table class = "table post-table">';
+         $str .=       '<tr><td class = "quick-set-title"><label class="credential-label" style="margin-top: 0px">Bulletin Title:</label></td>';
+         $str .=       '<td><input class="newpost-credential" id="newpost_title" type="text"></td></tr>';
+         $str .=       '<br/>';
+
+         $str .=       '<tr><td class = "quick-set"><label class="credential-label">Quick Set-up: </label>';
+         $str .=       '<a href="./docs/post_policy.html#leader" target="_blank" class = "help-button">[?]</a></td>';
+         $str .=       '<td><input type="submit" class="btn-default register-button post-button"';
+         $str .=         ' id="newpost_qset_leader" value="Thread Leader" onclick="quickPostSet_leader();"></td></tr>';
+
+         $str .=       '<br/>';
+
+         $str .=       '<tr><td class = "quick-set"><label class="credential-label">Quick Set-up: </label>';
+         $str .=       '<a href="./docs/post_policy.html#equals" target="_blank" class = "help-button">[?]</a></td>';
+         $str .=       '<td><input type="submit" class="btn-default register-button post-button"';
+         $str .=         ' id="newpost_qset_equal" value="Equal Standing" onclick="quickPostSet_democratic();"></td></tr>';
+
+         $str .=       '<br/>';
+
+         $str .=       '<tr><td><label class="credential-label">Custom Settings: </label></td>';
+         $str .=       '<td><input type="submit" class="btn-default register-button post-button"';
+         $str .=         ' id="newpost_create" value="Next" onclick="postSetupPage(1);"></td></tr>';
+         $str .=      '</table>';
+         $str .=     '</div>';
+         $str .=   '</div>';
+         $str .= '</div>';
+
          return $str;
        }
 

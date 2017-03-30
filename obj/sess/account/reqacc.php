@@ -43,6 +43,8 @@
 
  $cnfpword = preg_replace("~[^0-9A-Za-z\.\s\&\;\#\/\-\_\,\:\?\!]~", '', htmlentities($_POST['cnfpword'], ENT_QUOTES));
 
+ debug_log_inputs('account-reqacc', $_POST);
+
  if(strcmp($send_request, 'icanHaZ') == 0)						#  Run only if request came from JS
    {
      if(strlen($pword) < 8 ||
@@ -132,6 +134,8 @@
    croak('baddata');
 
  $_SESSION['last_access'] = $current_time;						#  Set its last access time
+
+ debug_log_outputs('account-reqacc', $outputstring);
 
  print $outputstring;
 

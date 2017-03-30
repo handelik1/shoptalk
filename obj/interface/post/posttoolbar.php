@@ -18,10 +18,10 @@
          $str .=       '<div class="nav">';
          $str .=         '<a class = "brand font-26 block brand-color">Tools</a>';
          $str .=         '<ul class="nav navbar-nav center">';
-         $str .=           '<li><a href="javascript:;" class = "font-22 tool-item">New Bulletin</a></li>';
-         $str .=           '<li><a href="javascript:;" class = "font-22 tool-item">Item 2</a></li>';
-         $str .=           '<li><a href="javascript:;" class = "font-22 tool-item">Item 3</a></li>';
-         $str .=           '<li><a href="javascript:;" class = "font-22 tool-item">Item 4</a></li>';
+         $str .=           '<li><a data-toggle="modal" data-target="#newpost-modal" class="font-22 tool-item">New Bulletin</a></li>';
+         $str .=           '<li><a href="javascript:;" class="font-22 tool-item">Item 2</a></li>';
+         $str .=           '<li><a href="javascript:;" class="font-22 tool-item">Item 3</a></li>';
+         $str .=           '<li><a href="javascript:;" class="font-22 tool-item">Item 4</a></li>';
          $str .=         '</ul>';
          $str .=       '</div>';
          $str .=     '</div>';
